@@ -8,7 +8,7 @@ import "./index.css";
 // Add basepath: '/'
 const router = createRouter({
   routeTree,
-  basepath: '/', // <-- Important for deployment!
+  basepath: '/', 
 });
 
 const rootElement = document.getElementById("root");
