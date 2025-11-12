@@ -103,7 +103,7 @@ const Footer = () => {
             <div className="text-left lg:text-right">
               <div className="flex items-center gap-2 justify-start lg:justify-end">
                 <span className="text-2xl sm:text-3xl">🎀</span>
-                <span className="text-xl sm:text-2xl font-bold">marshmallow</span>
+                <span className="text-xl sm:text-2xl font-bold">Be Sure</span>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ const Footer = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <p className="text-xs text-gray-500 text-center">
-            © 2024 Marshmallow. All rights reserved.
+            © 2024 Be Sure. All rights reserved.
           </p>
         </motion.div>
 
