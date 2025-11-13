@@ -1,8 +1,15 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function GuideVideo() {
   return (
-    <section className="w-full bg-white py-16 md:py-24">
+    <motion.section 
+      className="w-full bg-white py-16 md:py-24"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
@@ -60,6 +67,6 @@ export default function GuideVideo() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

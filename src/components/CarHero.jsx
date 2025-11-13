@@ -1,8 +1,15 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const CarHero = () => {
   return (
-    <section className="bg-gray-900 text-white min-h-screen flex items-center">
+    <motion.section 
+      className="bg-gray-900 text-white min-h-screen flex items-center"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6 lg:px-8 py-16 lg:py-0">
         
         {/* LEFT SIDE - Content */}
@@ -46,7 +53,7 @@ const CarHero = () => {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   )
 }
 

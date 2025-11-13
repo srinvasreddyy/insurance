@@ -1,8 +1,15 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function ClaimsSteps() {
   return (
-    <section className="w-full bg-gray-50 py-16 md:py-24">
+    <motion.section 
+      className="w-full bg-gray-50 py-16 md:py-24"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
@@ -75,6 +82,6 @@ export default function ClaimsSteps() {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

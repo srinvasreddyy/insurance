@@ -1,9 +1,16 @@
 import React from 'react'
-import vanImage from '../assets/vanimage1.webp'
+import { motion } from 'framer-motion'
+import vanImage from '../assets/Vanimage1.webp'
 
 const VanHero = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center bg-gray-900">
+    <motion.section 
+      className="relative w-full min-h-screen flex items-center bg-gray-900"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
@@ -67,7 +74,7 @@ const VanHero = () => {
         </div>
       </div>
 
-    </section>
+    </motion.section>
   )
 }
 

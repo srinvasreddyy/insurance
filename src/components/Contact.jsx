@@ -1,12 +1,25 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
-    <section className="w-full bg-gray-800 py-16 md:py-24 relative overflow-hidden">
+    <motion.section 
+      className="w-full bg-gray-800 py-16 md:py-24 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-white z-10">
+          <motion.div 
+            className="text-white z-10"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             {/* Main Heading */}
             <h1 className="text-5xl md:text-6xl font-bold mb-12 leading-tight">
               We're here to help
@@ -38,10 +51,20 @@ export default function Contact() {
             <button className="w-full sm:w-96 bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors duration-300 text-lg">
               Chat to us
             </button>
-          </div>
+          </motion.div>
 
           {/* Right Side - Character Illustration */}
-          <div className="relative h-96 md:h-full hidden lg:flex items-center justify-center">
+          <motion.div 
+            className="relative h-96 md:h-full hidden lg:flex items-center justify-center"
+            initial={{ opacity: 0, x: 30, y: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ 
+              opacity: { duration: 0.6, delay: 0.2 },
+              y: { repeat: Infinity, duration: 3 }
+            }}
+          >
             {/* Pink Character Head */}
             <div className="relative w-72 h-72">
               {/* Large Pink Circle */}
@@ -66,9 +89,9 @@ export default function Contact() {
                 <div className="w-3 h-4 bg-gray-900 rounded-full"></div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

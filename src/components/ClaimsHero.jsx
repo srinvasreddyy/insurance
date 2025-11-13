@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function ClaimsHero() {
   const [activeTab, setActiveTab] = useState('accident');
@@ -20,7 +21,13 @@ export default function ClaimsHero() {
   ];
 
   return (
-    <section className="w-full bg-white overflow-hidden">
+    <motion.section 
+      className="w-full bg-white overflow-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Top Section - White Background */}
       <div className="bg-white pt-16 md:pt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,6 +141,6 @@ export default function ClaimsHero() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
