@@ -30,7 +30,7 @@ export default function AboutUs() {
           </p>
 
           <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-            We started Marshmallow when we found out how unfair insurance prices are for people who move to the UK. Purely because the industry hasn't given this huge cohort of people a second thought, and isn't set up to price them properly.
+            We started Be Sure when we found out how unfair insurance prices are for people who move to the UK. Purely because the industry hasn't given this huge cohort of people a second thought, and isn't set up to price them properly.
           </p>
 
           <p className="text-base md:text-lg text-gray-700 leading-relaxed">

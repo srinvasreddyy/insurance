@@ -38,7 +38,7 @@ const ReferFriendHero = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Recommend <span className="font-semibold">Marshmallow</span> and get a<br />
+            Recommend <span className="font-semibold">Be Sure</span> and get a<br />
             <span className="font-semibold">£50 Amazon voucher</span> each – one for<br />
             you, one for your friend.
           </motion.p>

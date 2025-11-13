@@ -53,7 +53,7 @@ export default function BlogHero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Inside Marshmallow
+            Inside Be Sure
           </motion.button>
         </motion.div>
       </div>

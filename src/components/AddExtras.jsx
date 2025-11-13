@@ -20,7 +20,7 @@ const AddExtras = () => {
     {
       id: 3,
       title: "Courtesy Car upgrade (for theft and total loss)",
-      description: "Upgrade your courtesy cover if you'd like a replacement car if yours is stolen or cannot be repaired. Standard courtesy cover (included with all but Marshmallow Lightest) only gives you a replacement if your own car can be fixed."
+      description: "Upgrade your courtesy cover if you'd like a replacement car if yours is stolen or cannot be repaired. Standard courtesy cover (included with all but Be Sure Lightest) only gives you a replacement if your own car can be fixed."
     },
     {
       id: 4,
