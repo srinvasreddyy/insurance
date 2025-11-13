@@ -27,7 +27,7 @@ const NavBar = () => {
       <div className="flex justify-between items-center h-20 px-5 md:px-8">
         {/* Logo */}
         <motion.div 
-          className="text-2xl font-bold text-pink-500 cursor-pointer"
+          className="text-2xl font-bold text-blue-500 cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
         <a href="/">
@@ -40,7 +40,7 @@ const NavBar = () => {
             <motion.a
               key={item.id}
               href={item.path}
-              className="hover:text-pink-500 transition-colors"
+              className="hover:text-blue-500 transition-colors"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.3 }}
@@ -62,7 +62,7 @@ const NavBar = () => {
             Claims
           </motion.button>
           <motion.button 
-            className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full font-medium transition-colors"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-medium transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate({ to: '/getaquote' })}
@@ -94,7 +94,7 @@ const NavBar = () => {
               <motion.a
                 key={item.id}
                 href={item.path}
-                className="hover:text-pink-500 transition-colors"
+                className="hover:text-blue-500 transition-colors"
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -116,7 +116,7 @@ const NavBar = () => {
                 Claims
               </motion.button>
               <motion.button 
-                className="bg-pink-500 text-white px-6 py-2 rounded-full font-medium"
+                className="bg-blue-500 text-white px-6 py-2 rounded-full font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {

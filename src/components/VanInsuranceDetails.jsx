@@ -36,7 +36,7 @@ const VanInsuranceDetails = () => {
           </div>
 
           {/* CTA Button */}
-          <button className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold px-6 py-2 rounded-full transition-colors duration-200 text-sm w-full md:w-auto">
+          <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-6 py-2 rounded-full transition-colors duration-200 text-sm w-full md:w-auto">
             Get your cover now
           </button>
 

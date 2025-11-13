@@ -146,13 +146,13 @@ const Hero = () => {
             <button
               className="text-[15px] sm:text-[16px] px-8 sm:px-10 py-3 sm:py-3.5 rounded-full font-extrabold shadow-lg hover:shadow-xl transition-all duration-300"
               style={{
-                background: "#ff88c7",
-                color: "#333",
+                background: "#007AFF",
+                color: "#fff",
                 border: "none",
                 cursor: "pointer",
               }}
-              onMouseOver={(e) => e.target.style.background = "#ff6fbf"}
-              onMouseOut={(e) => e.target.style.background = "#ff88c7"}
+              onMouseOver={(e) => e.target.style.background = "blue"}
+              onMouseOut={(e) => e.target.style.background = "#007AFF"}
             >
               Get a free quote
             </button>

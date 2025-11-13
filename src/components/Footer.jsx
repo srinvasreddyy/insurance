@@ -18,16 +18,16 @@ const Footer = () => {
           
           {/* Social Icons */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <a href="#" className="text-white hover:text-pink-500 transition-colors text-xl sm:text-2xl">
+            <a href="#" className="text-white hover:text-blue-500 transition-colors text-xl sm:text-2xl">
               <FaInstagram />
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors text-xl sm:text-2xl">
+            <a href="#" className="text-white hover:text-blue-500 transition-colors text-xl sm:text-2xl">
               <FaFacebookF />
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors text-xl sm:text-2xl">
+            <a href="#" className="text-white hover:text-blue-500 transition-colors text-xl sm:text-2xl">
               <FaTwitter />
             </a>
-            <a href="#" className="text-white hover:text-pink-500 transition-colors text-xl sm:text-2xl">
+            <a href="#" className="text-white hover:text-blue-500 transition-colors text-xl sm:text-2xl">
               <FaLinkedinIn />
             </a>
           </div>
@@ -81,15 +81,15 @@ const Footer = () => {
             {/* Company Information */}
             <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300">
               <p>
-                Marshmallow is a trading name used by the following companies:
+                Be Sure is a trading name used by the following companies:
               </p>
 
               <p>
-                Marshmallow Financial Services Limited is authorised and regulated by the Financial Conduct Authority(FCA) <a href="#" className="text-pink-500 hover:text-pink-400 transition-colors">under firm reference number 797672</a>. Registered in England and Wales with company number 11005345.
+                Be Sure Financial Services Limited is authorised and regulated by the Financial Conduct Authority(FCA) <a href="#" className="text-pink-500 hover:text-pink-400 transition-colors">under firm reference number 797672</a>. Registered in England and Wales with company number 11005345.
               </p>
 
               <p>
-                Marshmallow Credit Services Limited is is authorised and regulated by the Financial Conduct Authority (FCA) under firm reference number 1024606. Registered in England and Wales with company number 15834468.
+                Be Sure Credit Services Limited is is authorised and regulated by the Financial Conduct Authority (FCA) under firm reference number 1024606. Registered in England and Wales with company number 15834468.
               </p>
 
               <p>

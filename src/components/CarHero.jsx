@@ -24,18 +24,18 @@ const CarHero = () => {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200">
+          <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200">
             Get a free quote
           </button>
 
           {/* Stats */}
           <div className="space-y-4 text-gray-300">
             <div className="flex items-center gap-3">
-              <span className="text-pink-400 text-2xl">⊕</span>
+              <span className="text-blue-400 text-2xl">⊕</span>
               <span className="text-base md:text-lg">Over £200 million paid out in claims</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-pink-400 text-2xl">⊕</span>
+              <span className="text-blue-400 text-2xl">⊕</span>
               <span className="text-base md:text-lg">Over 300,000 app downloads</span>
             </div>
           </div>

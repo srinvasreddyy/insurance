@@ -80,7 +80,7 @@ const NewToUkHero = () => {
           </ul>
 
           <div className="mt-8">
-            <button className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold px-12 py-3 rounded-full shadow-md transition-colors">
+            <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-12 py-3 rounded-full shadow-md transition-colors">
               Get a free quote
             </button>
           </div>

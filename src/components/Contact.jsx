@@ -48,7 +48,7 @@ export default function Contact() {
             </div>
 
             {/* Chat Button */}
-            <button className="w-full sm:w-96 bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors duration-300 text-lg">
+            <button className="w-full sm:w-96 bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors duration-300 text-lg">
               Chat to us
             </button>
           </motion.div>

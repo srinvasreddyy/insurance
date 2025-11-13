@@ -43,7 +43,7 @@ const VanHero = () => {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold px-12 py-3 rounded-full mb-10 transition-colors duration-200 text-lg w-full md:w-auto">
+            <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-12 py-3 rounded-full mb-10 transition-colors duration-200 text-lg w-full md:w-auto">
               Get a quote
             </button>
 

@@ -198,7 +198,7 @@ const CustomerReview = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <motion.button 
-            className="bg-pink-500 hover:bg-pink-600 text-gray-900 font-bold px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full transition-colors duration-200"
+            className="bg-blue-500 hover:bg-blue-600 text-gray-900 font-bold px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full transition-colors duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

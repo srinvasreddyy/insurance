@@ -40,26 +40,26 @@ const CarFinanceHero = () => {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold px-10 py-3 rounded-full mb-12 transition-colors duration-200 text-lg">
+            <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-10 py-3 rounded-full mb-12 transition-colors duration-200 text-lg">
               Join the waitlist
             </button>
 
             {/* Features List */}
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <span className="text-pink-400 text-2xl mt-0.5">⊕</span>
+                <span className="text-blue-400 text-2xl mt-0.5">⊕</span>
                 <span className="text-gray-200 text-base">
                   We look beyond your credit score
                 </span>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-pink-400 text-2xl mt-0.5">⊕</span>
+                <span className="text-blue-400 text-2xl mt-0.5">⊕</span>
                 <span className="text-gray-200 text-base">
                   Build your financial footprint
                 </span>
               </div>
               <div className="flex items-start gap-4">
-                <span className="text-pink-400 text-2xl mt-0.5">⊕</span>
+                <span className="text-blue-400 text-2xl mt-0.5">⊕</span>
                 <span className="text-gray-200 text-base">
                   Paper-free application
                 </span>

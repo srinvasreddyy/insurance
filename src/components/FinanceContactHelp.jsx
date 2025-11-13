@@ -55,7 +55,7 @@ export default function FinanceContactHelp() {
             </div>
 
             {/* Chat Button */}
-            <button className="bg-[#ff6fbf] hover:bg-[#ff5fb0] transition-colors duration-200 text-gray-900 font-bold text-base md:text-lg px-8 py-3 rounded-full w-full sm:w-auto">
+            <button className="bg-blue-400 hover:bg-blue-500 transition-colors duration-200 text-gray-900 font-bold text-base md:text-lg px-8 py-3 rounded-full w-full sm:w-auto">
               Chat to us
             </button>
           </div>

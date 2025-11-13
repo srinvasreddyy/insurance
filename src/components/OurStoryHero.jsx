@@ -30,7 +30,7 @@ export default function OurStoryHero() {
 
       {/* Pink Card Overlay - Mission Statement */}
       <div className="relative -mt-20 md:-mt-28 lg:-mt-32 px-6 md:px-12 lg:px-20 flex justify-center pb-12 md:pb-16 lg:pb-20">
-        <div className="bg-[#ff88c7] rounded-3xl p-8 md:p-10 lg:p-12 max-w-3xl w-full shadow-xl">
+        <div className="bg-blue-400 rounded-3xl p-8 md:p-10 lg:p-12 max-w-3xl w-full shadow-xl">
           {/* Badge */}
           <div className="inline-block mb-4">
             <span className="text-xs md:text-sm font-bold text-gray-900 tracking-wide">

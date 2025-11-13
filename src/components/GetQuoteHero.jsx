@@ -76,7 +76,7 @@ export default function GetQuoteHero() {
               {/* Find Vehicle Button */}
               <button
                 onClick={handleFindVehicle}
-                className="bg-pink-400 hover:bg-pink-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors inline-block"
+                className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors inline-block"
               >
                 Find vehicle
               </button>
@@ -93,7 +93,7 @@ export default function GetQuoteHero() {
         </div>
 
         {/* Right Section - Pink Background with Info Card */}
-        <div className="flex-1 bg-pink-400 px-4 sm:px-8 py-12 md:py-20 flex flex-col justify-center">
+        <div className="flex-1 bg-blue-400 px-4 sm:px-8 py-12 md:py-20 flex flex-col justify-center">
           <div className="max-w-md">
             {/* Info Card */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">

@@ -1,54 +1,98 @@
 import React from "react";
-import heroImage from "../assets/refer-friend.jpg"; // replace with your image path
+import { motion } from "framer-motion";
+import heroImage from "../assets/refer-friend.jpg";
 
 const ReferFriendHero = () => {
   return (
-    <div className="flex flex-col md:flex-row bg-[#1d1d1b] min-h-screen justify-center items-center p-6 md:p-12">
-      {/* Left Card */}
-      <div className="bg-[#fff8ef] rounded-3xl md:w-1/2 w-full p-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#1d1d1b] leading-tight mb-4">
-          Refer a friend.<br />Get rewarded.
-        </h1>
-        <p className="text-lg md:text-xl text-[#1d1d1b] mb-8">
-          Recommend <span className="font-medium">Marshmallow</span> and get a<br />
-          <span className="font-medium">£50 Amazon voucher</span> each – one for<br />
-          you, one for your friend.
-        </p>
-
-        <button className="bg-[#ff71b1] text-[#1d1d1b] font-semibold px-8 py-3 rounded-full text-lg hover:opacity-90 transition-all">
-          Refer a friend
-        </button>
-
-        <div className="flex items-center justify-center gap-2 mt-4 text-[#1d1d1b]/80">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-4 h-4"
+    <motion.section
+      className="w-full bg-gray-900 min-h-screen flex items-center justify-center px-6 py-12 lg:px-12"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        {/* Left Card */}
+        <motion.div
+          className="bg-amber-100 rounded-3xl p-8 lg:p-12 flex flex-col justify-center"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <motion.h1
+            className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 11c0-.667.167-1.333.5-2l3.5-6h-7l3.5 6c.333.667.5 1.333.5 2zm0 0v8m0 0h3m-3 0H9"
-            />
-          </svg>
-          <span className="underline text-sm font-medium cursor-pointer">
-            T & Cs Apply
-          </span>
-        </div>
-      </div>
+            Refer a friend.<br />Get rewarded.
+          </motion.h1>
 
-      {/* Right Image */}
-      <div className="md:w-1/2 w-full mt-8 md:mt-0 md:ml-8 flex justify-center">
-        <img
-          src={heroImage}
-          alt="Refer a friend"
-          className="rounded-3xl object-cover w-full h-[450px] md:h-[550px]"
-        />
+          <motion.p
+            className="text-lg lg:text-xl text-gray-800 mb-8 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Recommend <span className="font-semibold">Marshmallow</span> and get a<br />
+            <span className="font-semibold">£50 Amazon voucher</span> each – one for<br />
+            you, one for your friend.
+          </motion.p>
+
+          <motion.button
+            className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 mb-4 w-fit"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Refer a friend
+          </motion.button>
+
+          <motion.div
+            className="flex items-center gap-2 text-gray-700"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-4 h-4"
+            >
+              <path d="M12 1C6.48 1 2 5.48 2 11c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 1 12 1zm-2 15l-5-5 1.41-1.41L10 13.17l7.59-7.59L19 7l-9 9z" />
+            </svg>
+            <span className="text-sm font-medium">T&Cs Apply</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Right Image */}
+        <motion.div
+          className="w-full flex justify-center"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.img
+            src={heroImage}
+            alt="Refer a friend"
+            className="rounded-3xl object-cover w-full h-auto max-h-[500px] lg:max-h-[600px] shadow-2xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+
       </div>
-    </div>
+    </motion.section>
   );
 };
 
