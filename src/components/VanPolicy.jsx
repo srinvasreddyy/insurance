@@ -56,7 +56,7 @@ const VanPolicy = () => {
           {extras.map((extra) => (
             <div
               key={extra.id}
-              className="bg-orange-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
+              className="bg-blue-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
             >
               
               {/* Title */}

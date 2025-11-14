@@ -41,7 +41,7 @@ const VanCoverageDetails = () => {
   ]
 
   return (
-    <section className="bg-orange-50 py-16 lg:py-24 px-6 lg:px-8">
+    <section className="bg-blue-50 py-16 lg:py-24 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
@@ -62,7 +62,7 @@ const VanCoverageDetails = () => {
           {coverageScenarios.map((scenario) => (
             <div
               key={scenario.id}
-              className="bg-orange-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
+              className="bg-blue-100 rounded-2xl p-8 hover:shadow-md transition-shadow"
             >
               
               {/* Icon */}

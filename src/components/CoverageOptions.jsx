@@ -19,13 +19,13 @@ const CoverageOptions = () => {
   ]
 
   return (
-    <section className="bg-orange-50 py-12 sm:py-16 px-4 sm:px-6 md:px-12">
+    <section className="bg-blue-50 py-12 sm:py-16 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-stretch">
           
           {/* LEFT SECTION - Main Content */}
           <motion.div 
-            className="lg:w-1/2 bg-orange-600 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 flex flex-col justify-center text-white"
+            className="lg:w-1/2 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 flex flex-col justify-center text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

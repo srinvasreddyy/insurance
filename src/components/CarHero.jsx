@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const CarHero = () => {
   return (
     <motion.section 
-      className="bg-gray-900 text-white min-h-screen flex items-center"
+      className="bg-gradient-to-b from-slate-900 to-slate-800 text-white min-h-screen flex items-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -20,11 +20,11 @@ const CarHero = () => {
 
           <p className="text-lg md:text-xl mb-4 text-gray-100">
             Fully comprehensive.<br />
-            Fully flexible. <span className="text-pink-400 font-bold">Fully pink.</span>
+            Fully flexible. <span className="text-teal-400 font-bold">Fully Be Sure.</span>
           </p>
 
           {/* CTA Button */}
-          <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200">
+          <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200">
             Get a free quote
           </button>
 

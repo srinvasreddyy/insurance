@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 const UKDrivingGuide = () => {
   return (
-    <section className="bg-orange-50 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12">
+    <section className="bg-blue-50 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           
@@ -17,7 +17,7 @@ const UKDrivingGuide = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="shrink-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-pink-500 flex items-center justify-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-500 flex items-center justify-center">
                 <FaArrowRight className="text-white text-lg sm:text-xl" />
               </div>
             </div>

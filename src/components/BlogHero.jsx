@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function BlogHero() {
   return (
     <motion.section 
-      className="w-full bg-linear-to-b from-amber-50 to-white py-20 md:py-32"
+      className="w-full bg-linear-to-b from-slate-100 to-blue-50 py-20 md:py-32"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -42,14 +42,14 @@ export default function BlogHero() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.button 
-            className="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300"
+            className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Driving and UK car insurance
           </motion.button>
           <motion.button 
-            className="bg-amber-100 hover:bg-amber-200 text-gray-900 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
+            className="bg-blue-100 hover:bg-blue-200 text-gray-900 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

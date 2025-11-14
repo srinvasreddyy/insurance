@@ -51,7 +51,7 @@ const InsuranceBenefits = () => {
             </h2>
           </div>
           <p className="text-lg text-gray-700">
-            Marshmallow car insurance, built with you in mind.
+            Be Sure car insurance, built with you in mind.
           </p>
         </div>
 

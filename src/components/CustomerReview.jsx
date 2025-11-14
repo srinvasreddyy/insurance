@@ -41,7 +41,7 @@ const CustomerReview = () => {
       id: 3,
       rating: 5,
       title: "Best for people who con...",
-      text: "The best thing I like is that Marshmallow understands that (people like me, a non...",
+      text: "The best thing I like is that Be Sure understands that (people like me, a non...",
       author: "FIROZ MUHAMMED",
       date: "3 April"
     },
@@ -57,7 +57,7 @@ const CustomerReview = () => {
       id: 5,
       rating: 5,
       title: "Thumbs up!",
-      text: "I must say using Marshmallow is one of the best rewarding decisions I have made comin...",
+      text: "I must say using Be Sure is one of the best rewarding decisions I have made comin...",
       author: "Dairo",
       date: "29 March"
     },

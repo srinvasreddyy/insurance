@@ -17,7 +17,7 @@ export default function ClaimsSteps() {
           <div>
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 mt-1">
-                <div className="flex items-center justify-center h-6 w-6 rounded-full bg-pink-500">
+                <div className="flex items-center justify-center h-6 w-6 rounded-full bg-teal-500">
                   <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                   </svg>
@@ -37,7 +37,7 @@ export default function ClaimsSteps() {
             {/* Step 1 */}
             <div>
               <div className="flex items-start gap-3 mb-3">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-pink-500 text-white font-bold text-sm flex-shrink-0">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-teal-500 text-white font-bold text-sm flex-shrink-0">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">
@@ -52,7 +52,7 @@ export default function ClaimsSteps() {
             {/* Step 2 */}
             <div>
               <div className="flex items-start gap-3 mb-3">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-pink-500 text-white font-bold text-sm flex-shrink-0">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-teal-500 text-white font-bold text-sm flex-shrink-0">
                   2
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">
@@ -67,7 +67,7 @@ export default function ClaimsSteps() {
             {/* Step 3 */}
             <div>
               <div className="flex items-start gap-3 mb-3">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-pink-500 text-white font-bold text-sm flex-shrink-0">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-teal-500 text-white font-bold text-sm flex-shrink-0">
                   3
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">

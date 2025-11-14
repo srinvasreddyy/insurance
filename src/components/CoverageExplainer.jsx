@@ -21,7 +21,7 @@ const CoverageExplainer = () => {
             {/* Link */}
             <a
               href="#"
-              className="text-white underline font-semibold hover:text-pink-300 transition-colors text-lg"
+              className="text-white underline font-semibold hover:text-teal-300 transition-colors text-lg"
             >
               Read more about Fully Comprehensive policies
             </a>
@@ -31,12 +31,12 @@ const CoverageExplainer = () => {
           <div className="relative h-96 hidden lg:flex items-center justify-center">
             
             {/* Orange Circle - Top Right */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600 rounded-full transform rotate-12 flex items-center justify-center">
-              <span className="text-4xl text-orange-900">👀</span>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-600 rounded-full transform rotate-12 flex items-center justify-center">
+              <span className="text-4xl text-teal-900">👀</span>
             </div>
 
             {/* Pink Hexagon - Middle Right */}
-            <div className="absolute top-1/3 right-12 w-40 h-32 bg-pink-400 rounded-3xl flex items-center justify-center" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'}}>
+            <div className="absolute top-1/3 right-12 w-40 h-32 bg-teal-500 rounded-3xl flex items-center justify-center" style={{clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'}}>
               <span className="text-5xl">👀</span>
             </div>
 
@@ -53,7 +53,7 @@ const CoverageExplainer = () => {
       </div>
 
       {/* Optional: Mobile shapes positioned differently */}
-      <div className="lg:hidden absolute top-0 right-0 w-20 h-20 bg-orange-600 rounded-full opacity-80"></div>
+      <div className="lg:hidden absolute top-0 right-0 w-20 h-20 bg-teal-600 rounded-full opacity-80"></div>
     </section>
   )
 }

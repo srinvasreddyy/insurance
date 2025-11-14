@@ -6,8 +6,8 @@ export default function FinanceFaq() {
   const faqs = [
     {
       id: 1,
-      question: 'Is Marshmallow car finance a broker?',
-      answer: 'Marshmallow is a broker. We help UK newcomers access car finance from our panel of lenders.',
+      question: 'Is Be Sure car finance a broker?',
+      answer: 'Be Sure is a broker. We help UK newcomers access car finance from our panel of lenders.',
     },
     {
       id: 2,

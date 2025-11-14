@@ -1,18 +1,54 @@
 import React, { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
 
 export default function GetQuoteHero() {
   const [numberPlate, setNumberPlate] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  // UK number plate validation
+  // Format: 2 letters + 02-52 + 3 letters (e.g., AB02 XYZ)
+  const validateNumberPlate = (plate) => {
+    const cleanPlate = plate.replace(/\s/g, '').toUpperCase();
+    
+    // Check if empty
+    if (!cleanPlate.trim()) {
+      return { valid: false, message: 'Please enter a vehicle number plate' };
+    }
+
+    // UK number plate regex - matches modern format (2 letters + 2 digits + 3 letters)
+    const ukPlateRegex = /^[A-Z]{2}[0-9]{2}[A-Z]{3}$/;
+    
+    if (!ukPlateRegex.test(cleanPlate)) {
+      return { 
+        valid: false, 
+        message: 'Invalid number plate format. Use format like: AB02XYZ (2 letters + 2 numbers + 3 letters)' 
+      };
+    }
+
+    return { valid: true, message: '' };
+  };
 
   const handleFindVehicle = () => {
-    if (numberPlate.trim()) {
-      console.log('Searching for vehicle:', numberPlate);
+    const validation = validateNumberPlate(numberPlate);
+    
+    if (validation.valid) {
+      setError('');
+      console.log('Searching for vehicle:', numberPlate.replace(/\s/g, '').toUpperCase());
+      // Here you would typically make an API call or navigate to the next step
+    } else {
+      setError(validation.message);
     }
+  };
+
+  const handleLogoClick = () => {
+    navigate({ to: '/' });
   };
 
   return (
     <motion.section 
-      className="w-full bg-white"
+      className="w-full bg-gradient-to-b from-slate-100 to-white"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -20,21 +56,24 @@ export default function GetQuoteHero() {
     >
       {/* Header */}
       <motion.div 
-        className="bg-gray-50 py-6 px-4 sm:px-6 lg:px-8"
+        className="bg-blue-50 py-6 px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-6xl mx-auto flex items-center gap-3">
-          <div className="flex items-center gap-1">
+          <button 
+            onClick={handleLogoClick}
+            className="flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <img 
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff69b4'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E" 
-              alt="Marshmallow" 
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E" 
+              alt="Be Sure" 
               className="w-6 h-6"
             />
-            <span className="font-bold text-gray-900">marshmallow</span>
-          </div>
+            <span className="font-bold text-gray-900">be sure</span>
+          </button>
           <div className="flex items-center gap-1">
             <span className="text-teal-500">★★★★★</span>
             <span className="text-sm text-gray-600">Rated Excellent on Trustpilot</span>
@@ -60,23 +99,38 @@ export default function GetQuoteHero() {
               </label>
               
               {/* Input Container */}
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-4">
                 <div className="flex items-center bg-blue-200 rounded-lg py-2 px-3 min-w-fit">
                   <span className="font-bold text-gray-800">GB</span>
                 </div>
                 <input
                   type="text"
-                  placeholder="NUMBER PLATE"
+                  placeholder="AB02XYZ"
                   value={numberPlate}
-                  onChange={(e) => setNumberPlate(e.target.value.toUpperCase())}
-                  className="flex-1 px-4 py-3 bg-gray-100 text-gray-600 placeholder-gray-400 rounded-lg border-2 border-transparent focus:outline-none focus:border-blue-300 text-lg"
+                  onChange={(e) => {
+                    setNumberPlate(e.target.value.toUpperCase());
+                    setError(''); // Clear error on input change
+                  }}
+                  maxLength="7"
+                  className={`flex-1 px-4 py-3 bg-gray-100 text-gray-600 placeholder-gray-400 rounded-lg border-2 transition-colors focus:outline-none text-lg font-semibold ${
+                    error ? 'border-red-500 focus:border-red-500' : 'border-transparent focus:border-blue-300'
+                  }`}
                 />
               </div>
+
+              {/* Error Message */}
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-700 text-sm font-semibold flex items-center gap-2">
+                    <span className="text-lg">⚠️</span> {error}
+                  </p>
+                </div>
+              )}
 
               {/* Find Vehicle Button */}
               <button
                 onClick={handleFindVehicle}
-                className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold py-3 px-8 rounded-full transition-colors inline-block"
+                className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-full transition-colors inline-block"
               >
                 Find vehicle
               </button>

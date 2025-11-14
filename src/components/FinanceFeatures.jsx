@@ -34,7 +34,7 @@ export default function FinanceFeatures() {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Why Marshmallow car finance
+            Why Be Sure car finance
           </h2>
           <p className="text-base md:text-lg text-gray-700">
             Most lenders won't approve UK newcomers.

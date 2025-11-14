@@ -22,7 +22,7 @@ export default function ClaimsHero() {
 
   return (
     <motion.section 
-      className="w-full bg-white overflow-hidden"
+      className="w-full bg-gradient-to-b from-blue-50 to-white overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -43,7 +43,7 @@ export default function ClaimsHero() {
             {/* Right Content - Call Info */}
             <div className="flex flex-col justify-start">
               <div className="bg-white">
-                <h2 className="text-4xl font-bold text-pink-500 mb-4">0800 060 8622</h2>
+                <h2 className="text-4xl font-bold text-teal-500 mb-4">0800 060 8622</h2>
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-gray-900 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -71,7 +71,7 @@ export default function ClaimsHero() {
       </div>
 
       {/* Pink Wave Section */}
-      <div className="bg-pink-400 pt-24 pb-16">
+      <div className="bg-teal-500 pt-24 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Help Section */}
           <div className="text-center mb-12">
@@ -111,7 +111,7 @@ export default function ClaimsHero() {
                   {callServices.map((service, index) => (
                     <li key={index} className="flex items-start gap-2 text-gray-300">
                       {service.checked ? (
-                        <svg className="w-5 h-5 text-pink-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       ) : (
@@ -124,7 +124,7 @@ export default function ClaimsHero() {
                   ))}
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-700">
-                  <a href="tel:0800060862" className="text-pink-400 text-2xl font-bold hover:text-pink-300 transition-colors">
+                  <a href="tel:0800060862" className="text-teal-400 text-2xl font-bold hover:text-teal-300 transition-colors">
                     0800 060 8622
                   </a>
                 </div>

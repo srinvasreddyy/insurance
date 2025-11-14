@@ -36,14 +36,14 @@ export default function PurposeSection() {
             </h2>
 
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
-              We've come a long way already, and we're growing fast. Become a Marshmallower and help shape the next part of our story.
+              We've come a long way already, and we're growing fast. Become a Be Sure member and help shape the next part of our story.
             </p>
 
             <a
               href="#"
               className="inline-block bg-[#c9bfb3] hover:bg-[#b5aba1] transition-colors duration-200 text-gray-900 font-bold text-base md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-full"
             >
-              Jobs at Marshmallow
+              Jobs at Be Sure
             </a>
           </div>
         </div>

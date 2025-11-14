@@ -33,7 +33,7 @@ const NewToUkAd = () => {
 
             {/* Bold highlight */}
             <p className="text-base lg:text-lg font-bold text-gray-900">
-              Then came Marshmallow!
+              Then came Be Sure!
             </p>
 
             {/* Second paragraph */}

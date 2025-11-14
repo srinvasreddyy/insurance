@@ -68,7 +68,7 @@ export default function Contact() {
             {/* Pink Character Head */}
             <div className="relative w-72 h-72">
               {/* Large Pink Circle */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-pink-400 rounded-full"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500 rounded-full"></div>
               
               {/* Eyes */}
               <div className="absolute top-20 right-24 w-8 h-8 bg-white rounded-full flex items-center justify-center">
@@ -79,7 +79,7 @@ export default function Contact() {
               </div>
 
               {/* Orange Character Body/Head */}
-              <div className="absolute bottom-0 left-8 w-56 h-48 bg-orange-500 rounded-3xl rounded-br-none"></div>
+              <div className="absolute bottom-0 left-8 w-56 h-48 bg-slate-600 rounded-3xl rounded-br-none"></div>
 
               {/* Eyes for Orange Character */}
               <div className="absolute bottom-24 left-16 w-6 h-6 bg-white rounded-full flex items-center justify-center">

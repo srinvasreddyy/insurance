@@ -17,7 +17,7 @@ const InfoSection = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="shrink-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-600 flex items-center justify-center">
                 <FaArrowRight className="text-white text-lg sm:text-xl" />
               </div>
             </div>
@@ -39,7 +39,7 @@ const InfoSection = () => {
             </p>
 
             <p className="text-base sm:text-lg text-gray-900 font-bold">
-              So we started Marshmallow!
+              So we started Be Sure!
             </p>
 
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed">

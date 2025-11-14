@@ -31,7 +31,7 @@ const FeatureList = () => {
   ]
 
   return (
-    <section className="bg-orange-50 py-12 sm:py-16 px-4 sm:px-6 md:px-12">
+    <section className="bg-blue-50 py-12 sm:py-16 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           

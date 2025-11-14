@@ -5,7 +5,7 @@ import heroImage from "../assets/refer-friend.jpg";
 const ReferFriendHero = () => {
   return (
     <motion.section
-      className="w-full bg-gray-900 min-h-screen flex items-center justify-center px-6 py-12 lg:px-12"
+      className="w-full bg-slate-900 min-h-screen flex items-center justify-center px-6 py-12 lg:px-12"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -15,7 +15,7 @@ const ReferFriendHero = () => {
         
         {/* Left Card */}
         <motion.div
-          className="bg-amber-100 rounded-3xl p-8 lg:p-12 flex flex-col justify-center"
+          className="bg-blue-100 rounded-3xl p-8 lg:p-12 flex flex-col justify-center"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -44,7 +44,7 @@ const ReferFriendHero = () => {
           </motion.p>
 
           <motion.button
-            className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 mb-4 w-fit"
+                        className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300 mb-4 w-fit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}

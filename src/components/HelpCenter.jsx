@@ -7,7 +7,7 @@ export default function HelpCenter() {
       id: 1,
       title: 'Buying a policy',
       articles: [
-        'What is Marshmallow Essential?',
+        'What is Be Sure Essential?',
         'What fees do you charge?',
         'Do you offer temporary insurance?',
         'How do I refer a friend?',
@@ -71,7 +71,7 @@ export default function HelpCenter() {
 
   return (
     <motion.section 
-      className="w-full bg-white py-16 md:py-24"
+      className="w-full bg-gradient-to-b from-white to-blue-50 py-16 md:py-24"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -89,7 +89,7 @@ export default function HelpCenter() {
           {categories.map((category) => (
             <motion.div
               key={category.id}
-              className="bg-amber-50 rounded-2xl p-6 flex flex-col h-full"
+              className="bg-blue-100 rounded-2xl p-6 flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -121,11 +121,11 @@ export default function HelpCenter() {
               </div>
 
               {/* View all articles Link */}
-              <div className="flex items-center justify-between pt-4 border-t border-amber-200">
+              <div className="flex items-center justify-between pt-4 border-t border-blue-200">
                 <a href="#" className="text-gray-700 font-semibold text-sm hover:text-gray-900 transition-colors underline">
                   View all articles
                 </a>
-                <button className="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-full transition-colors flex-shrink-0">
+                <button className="bg-teal-500 hover:bg-teal-600 text-white p-3 rounded-full transition-colors flex-shrink-0">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

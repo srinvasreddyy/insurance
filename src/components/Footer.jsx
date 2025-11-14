@@ -85,7 +85,7 @@ const Footer = () => {
               </p>
 
               <p>
-                Be Sure Financial Services Limited is authorised and regulated by the Financial Conduct Authority(FCA) <a href="#" className="text-pink-500 hover:text-pink-400 transition-colors">under firm reference number 797672</a>. Registered in England and Wales with company number 11005345.
+                Be Sure Financial Services Limited is authorised and regulated by the Financial Conduct Authority(FCA) <a href="#" className="text-teal-500 hover:text-teal-400 transition-colors">under firm reference number 797672</a>. Registered in England and Wales with company number 11005345.
               </p>
 
               <p>

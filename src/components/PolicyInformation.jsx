@@ -5,7 +5,7 @@ const PolicyInformation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <section className="bg-orange-50 py-8 sm:py-12 px-4 sm:px-6 md:px-12">
+    <section className="bg-blue-50 py-8 sm:py-12 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="bg-gray-100 rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12"
@@ -17,7 +17,7 @@ const PolicyInformation = () => {
           
           {/* Disclaimer Text 1 */}
           <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
-            <span className="font-semibold">*</span>Based on internal data for 4,304 policies sold via Confused.com from January 2025 to June 2025 to those of UK newcomers living in the UK less than 3 years. The average difference between Marshmallow's price and the second cheapest price was £392.
+            <span className="font-semibold">*</span>Based on internal data for 4,304 policies sold via Confused.com from January 2025 to June 2025 to those of UK newcomers living in the UK less than 3 years. The average difference between Be Sure's price and the second cheapest price was £392.
           </p>
 
           {/* Disclaimer Text 2 */}
@@ -27,7 +27,7 @@ const PolicyInformation = () => {
 
           {/* Disclaimer Text 3 */}
           <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6">
-            79% of our customers are new to the UK based on data from all active Marshmallow car insurance policyholders from 2018 - 2024.
+            79% of our customers are new to the UK based on data from all active Be Sure car insurance policyholders from 2018 - 2024.
           </p>
 
           {/* Expandable Section */}
@@ -65,7 +65,7 @@ const PolicyInformation = () => {
                   </li>
                   <li className="flex gap-2 sm:gap-3">
                     <span className="text-gray-400">•</span>
-                    <span>All testimonials and reviews are from real Marshmallow customers</span>
+                    <span>All testimonials and reviews are from real Be Sure customers</span>
                   </li>
                 </ul>
               </div>

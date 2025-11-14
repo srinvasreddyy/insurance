@@ -19,7 +19,7 @@ const NavBar = () => {
 
   return (
     <motion.nav 
-      className="w-full bg-[#f1e9dc] shadow-sm fixed top-0 left-0 z-50"
+      className="w-full bg-gradient-to-r from-blue-600 to-teal-600 shadow-md fixed top-0 left-0 z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -31,16 +31,16 @@ const NavBar = () => {
           whileHover={{ scale: 1.05 }}
         >
         <a href="/">
-         <img src={logo} alt="Company Logo" className="h-10 w-auto" />
+         <img src={logo} alt="Company Logo" className="h-12 w-auto" />
         </a></motion.div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex gap-6 text-neutral-800 font-medium">
+        <div className="hidden lg:flex gap-6 text-white font-medium">
           {menu.map((item, index) => (
             <motion.a
               key={item.id}
               href={item.path}
-              className="hover:text-blue-500 transition-colors"
+              className="hover:text-blue-200 transition-colors"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.3 }}
@@ -54,7 +54,7 @@ const NavBar = () => {
         {/* Buttons */}
         <div className="hidden md:flex gap-4">
           <motion.button 
-            className="bg-neutral-300 hover:bg-neutral-400 px-6 py-2 rounded-full font-medium transition-colors"
+            className="bg-white hover:bg-gray-100 text-blue-600 px-6 py-2 rounded-full font-medium transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate({ to: '/claims' })}
@@ -62,7 +62,7 @@ const NavBar = () => {
             Claims
           </motion.button>
           <motion.button 
-            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-medium transition-colors"
+            className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-full font-medium transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate({ to: '/getaquote' })}
@@ -84,7 +84,7 @@ const NavBar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div 
-            className="lg:hidden bg-[#f1e9dc] flex flex-col items-center gap-4 py-6 text-neutral-800 font-medium"
+            className="lg:hidden bg-blue-700 flex flex-col items-center gap-4 py-6 text-white font-medium"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -94,7 +94,7 @@ const NavBar = () => {
               <motion.a
                 key={item.id}
                 href={item.path}
-                className="hover:text-blue-500 transition-colors"
+                className="hover:text-blue-200 transition-colors"
                 onClick={() => setMenuOpen(false)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -105,22 +105,22 @@ const NavBar = () => {
             ))}
             <div className="flex flex-col gap-3 mt-4">
               <motion.button 
-                className="bg-neutral-300 px-6 py-2 rounded-full font-medium"
+                className="bg-white text-blue-600 px-6 py-2 rounded-full font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  navigate('/claims');
+                  navigate({ to: '/claims' });
                   setMenuOpen(false);
                 }}
               >
                 Claims
               </motion.button>
               <motion.button 
-                className="bg-blue-500 text-white px-6 py-2 rounded-full font-medium"
+                className="bg-teal-500 text-white px-6 py-2 rounded-full font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  navigate('/getaquote');
+                  navigate({ to: '/getaquote' });
                   setMenuOpen(false);
                 }}
               >

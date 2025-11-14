@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ReferInstructions = () => {
   return (
     <motion.section
-      className="w-full bg-amber-50 py-20 px-6 lg:px-8"
+      className="w-full bg-blue-50 py-20 px-6 lg:px-8"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -28,7 +28,7 @@ const ReferInstructions = () => {
           <motion.div className="lg:col-span-2 flex flex-col gap-12">
             {/* Step 1 */}
             <motion.div className="flex items-start gap-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <motion.div className="shrink-0 flex items-center justify-center bg-orange-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
+              <motion.div className="shrink-0 flex items-center justify-center bg-teal-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
                 1
               </motion.div>
               <div className="pt-1">
@@ -44,7 +44,7 @@ const ReferInstructions = () => {
 
             {/* Step 2 */}
             <motion.div className="flex items-start gap-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-              <motion.div className="shrink-0 flex items-center justify-center bg-orange-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
+              <motion.div className="shrink-0 flex items-center justify-center bg-teal-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
                 2
               </motion.div>
               <div className="pt-1">
@@ -60,7 +60,7 @@ const ReferInstructions = () => {
 
             {/* Step 3 */}
             <motion.div className="flex items-start gap-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
-              <motion.div className="shrink-0 flex items-center justify-center bg-orange-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
+              <motion.div className="shrink-0 flex items-center justify-center bg-teal-500 text-white font-bold rounded-full w-12 h-12 text-xl" whileHover={{ scale: 1.1 }}>
                 3
               </motion.div>
               <div className="pt-1">
