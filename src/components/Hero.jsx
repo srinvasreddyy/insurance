@@ -4,8 +4,8 @@ import { FaLock, FaArrowRight } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-b from-white via-blue-50 to-slate-50 min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 py-12 lg:py-0">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 max-lg:mt-20 pt-10 gap-8 lg:gap-16 items-center">
+    <section className="bg-gradient-to-b from-white via-blue-50 to-slate-50 min-h-screen flex items-center justify-center w-full overflow-hidden py-12 lg:py-0">
+      <div className="w-full max-w-7xl px-3 sm:px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 max-lg:mt-20 pt-10 gap-6 sm:gap-8 lg:gap-16 items-center">
         
         {/* LEFT: Image with modern card design */}
         <motion.div 

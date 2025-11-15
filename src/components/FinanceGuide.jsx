@@ -23,7 +23,7 @@ export default function FinanceGuide() {
   ];
 
   return (
-    <section className="bg-[#f9f0e9] py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20">
+    <section className="bg-[#f9f0e9] py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left Column - Title and Intro */}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ReferInstructions = () => {
   return (
     <motion.section
-      className="w-full bg-blue-50 py-20 px-6 lg:px-8"
+      className="w-full bg-blue-50 py-20 px-4 sm:px-6 lg:px-8"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}

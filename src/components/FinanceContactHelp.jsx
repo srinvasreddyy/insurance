@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function FinanceContactHelp() {
   return (
-    <section className="bg-[#2a2a26] py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+    <section className="bg-[#2a2a26] py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Contact Information */}

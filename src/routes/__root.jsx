@@ -9,7 +9,9 @@ function RootComponent() {
   return (
     <React.Fragment>
       <NavBar/>
-      <Outlet />
+      <div className="pt-20 md:pt-0 w-full overflow-x-hidden">
+        <Outlet />
+      </div>
     </React.Fragment>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CreditScore() {
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20">
+    <section className="bg-white py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left Column - Title with Icon */}

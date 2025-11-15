@@ -2,7 +2,7 @@ import React from 'react'
 
 const CoverageExplainer = () => {
   return (
-    <section className="bg-emerald-800 text-white py-16 lg:py-24 px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-emerald-800 text-white py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           

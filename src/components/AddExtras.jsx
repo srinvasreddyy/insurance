@@ -45,8 +45,8 @@ const AddExtras = () => {
   ]
 
   return (
-    <section className="bg-white py-16 lg:py-24 px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-12">

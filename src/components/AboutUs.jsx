@@ -21,8 +21,8 @@ export default function AboutUs() {
   ];
 
   return (
-    <section className="bg-white py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-white py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto">
         {/* Story Content */}
         <div className="space-y-6 mb-16 md:mb-20">
           <p className="text-base md:text-lg text-gray-800 leading-relaxed">

@@ -18,7 +18,7 @@ const GetaQuote = () => {
   }, []);
 
   return (
-    <div>
+    <div className="-mt-20 md:mt-0">
         <GetQuoteHero />
     </div>
   )

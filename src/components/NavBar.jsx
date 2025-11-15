@@ -19,7 +19,7 @@ const NavBar = () => {
 
   return (
     <motion.nav 
-      className="w-full bg-gradient-to-r from-blue-600 to-teal-600 shadow-md fixed top-0 left-0 z-50"
+      className="w-full bg-blue-600 shadow-md fixed top-0 left-0 z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -31,7 +31,7 @@ const NavBar = () => {
           whileHover={{ scale: 1.05 }}
         >
         <a href="/">
-         <img src={logo} alt="Company Logo" className="h-12 w-auto" />
+         <img src={logo} alt="Company Logo" className="h-15 w-auto" />
         </a></motion.div>
 
         {/* Desktop Menu */}
@@ -84,7 +84,7 @@ const NavBar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div 
-            className="lg:hidden bg-blue-700 flex flex-col items-center gap-4 py-6 text-white font-medium"
+            className="lg:hidden bg-blue-600 flex flex-col items-center gap-4 py-6 text-white font-medium"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

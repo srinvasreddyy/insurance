@@ -4,7 +4,7 @@ export default function PurposeSection() {
   return (
     <div className="bg-white">
       {/* Purpose-Led Section */}
-      <section className="bg-[#f5ede4] py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20">
+      <section className="bg-[#f5ede4] py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-6">
             Purpose-led from the start
@@ -28,7 +28,7 @@ export default function PurposeSection() {
       </section>
 
       {/* Join Us Section */}
-      <section className="bg-[#e8dfd6] py-16 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20">
+      <section className="bg-[#e8dfd6] py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="max-w-3xl mx-auto text-center">
           <div className="bg-[#d9cfc3] rounded-full py-12 md:py-16 lg:py-20 px-8 md:px-12 lg:px-16">
             <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-6">
