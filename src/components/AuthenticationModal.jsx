@@ -25,6 +25,7 @@ const AuthenticationModal = () => {
             <FaTimes size={24} />
           </button>
 
+          {/* FIX: Use modalState.type to match the context provider */}
           {modalState.type === 'login' && <LoginModal />}
           {modalState.type === 'register' && <RegisterModal />}
           {modalState.type === 'otp' && <OTPModal />}
