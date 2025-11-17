@@ -14,18 +14,6 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Badge - USA → UK */}
-          <motion.div 
-            className="absolute top-6 right-2 z-30"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <div className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 py-2 rounded-full text-sm font-bold tracking-wide whitespace-nowrap shadow-lg">
-              USA → UK
-            </div>
-          </motion.div>
-
           {/* Image Container with Modern Styling */}
           <motion.div 
             className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl"
@@ -40,25 +28,6 @@ const Hero = () => {
             />
             {/* Overlay gradient for depth */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-          </motion.div>
-
-          {/* Stats Badge - Modern circular design */}
-          <motion.div 
-            className="absolute -bottom-12 sm:-bottom-16 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-0 z-20"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <div 
-              className="text-center shadow-2xl w-44 sm:w-48 p-6 sm:p-8 bg-gradient-to-br from-teal-500 to-teal-600 rounded-3xl text-white"
-            >
-              <div className="text-4xl sm:text-5xl font-black leading-tight">
-                78,616
-              </div>
-              <div className="text-xs sm:text-sm font-bold tracking-widest mt-3 uppercase opacity-90">
-                Miles driven<br />in miami
-              </div>
-            </div>
           </motion.div>
         </motion.div>
 

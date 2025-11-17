@@ -24,7 +24,7 @@ const PromoCard = () => {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-3 leading-tight">
               Protect future you with Be Sure
             </h2>
-
+            
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-gray-800 font-medium max-w-2xl">
               Get the cover you need at a price that's fair. It's just two steps away.
