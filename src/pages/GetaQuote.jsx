@@ -7,9 +7,9 @@ import VehicleInfo from '../components/VehicleInfo';
 import DriverInfo from '../components/DriverInfo';
 import LicenseInfo from '../components/LicenseInfo';
 import HistoryInfo from '../components/HistoryInfo';
-import UsageInfo from '../components/UsageInfo'; // <-- 1. Import
-import Payment from '../components/Payment'; // <-- 1. Import
-import QuoteDisplay from '../components/QuoteDisplay'; // <-- 1. Import
+import UsageInfo from '../components/UsageInfo';
+import Payment from '../components/Payment';
+import QuoteDisplay from '../components/QuoteDisplay';
 import Spinner from '../components/Spinner';
 
 // Mock data
@@ -46,9 +46,9 @@ const STEPS = {
   DRIVER_INFO: 'driverInfo',
   LICENSE: 'license',
   HISTORY: 'history',
-  USAGE: 'usage', // <-- New step
-  PAYMENT: 'payment', // <-- New step
-  QUOTE: 'quote', // <-- New step
+  USAGE: 'usage',
+  PAYMENT: 'payment',
+  QUOTE: 'quote',
 };
 
 const GetaQuote = () => {
@@ -57,9 +57,8 @@ const GetaQuote = () => {
   const [vehicleData, setVehicleData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
-  const [quotePrice, setQuotePrice] = useState(null); // <-- New state
+  const [quotePrice, setQuotePrice] = useState(null);
 
-  // All quote data will be stored here
   const [quoteData, setQuoteData] = useState({});
 
   useEffect(() => {
@@ -120,10 +119,9 @@ const GetaQuote = () => {
   const handleHistoryInfoSubmit = (info) => {
     setQuoteData((prev) => ({ ...prev, historyInfo: info }));
     console.log('History Info Submitted:', info);
-    setStep(STEPS.USAGE); // <-- 2. Advance to new step
+    setStep(STEPS.USAGE);
   };
 
-  // 3. New handlers for Usage and Payment
   const handleUsageInfoSubmit = (info) => {
     setQuoteData((prev) => ({ ...prev, usageInfo: info }));
     console.log('Usage Info Submitted:', info);
@@ -131,30 +129,36 @@ const GetaQuote = () => {
   };
 
   const handlePaymentInfoSubmit = (info) => {
-    // Store final data
     const finalData = { ...quoteData, paymentInfo: info };
     setQuoteData(finalData);
     console.log('--- ALL QUOTE DATA ---', finalData);
 
-    // Final step: Generate quote
     setIsLoading(true);
-    
-    // Generate a random price between 200 and 300
     const randomPrice = (Math.random() * (300 - 200) + 200).toFixed(2);
     setQuotePrice(randomPrice);
 
-    // Simulate API call for quote
     setTimeout(() => {
       setIsLoading(false);
       setStep(STEPS.QUOTE);
     }, 1500);
   };
 
-  // 4. Update header logic
-  const getActiveStepForHeader = () => {
+  // --- LOGIC FOR PROGRESS BAR ---
+  // The 5 steps where the progress bar should be visible
+  const fiveFormSteps = [
+    STEPS.VEHICLE_INFO,
+    STEPS.DRIVER_INFO,
+    STEPS.LICENSE,
+    STEPS.HISTORY,
+    STEPS.USAGE,
+  ];
+  
+  // This is true only when the current step is one of the 5 above
+  const showProgressBar = fiveFormSteps.includes(step);
+
+  // This tells the header which step to light up
+  const getActiveStepId = () => {
     switch (step) {
-      case STEPS.SEARCH:
-      case STEPS.DETAILS:
       case STEPS.VEHICLE_INFO:
         return 'vehicle';
       case STEPS.DRIVER_INFO:
@@ -164,16 +168,21 @@ const GetaQuote = () => {
       case STEPS.HISTORY:
         return 'history';
       case STEPS.USAGE:
+        return 'usage';
+      // For steps before/after, we still need to know where to highlight
+      case STEPS.SEARCH:
+      case STEPS.DETAILS:
+        return 'vehicle'; // Default to first step
       case STEPS.PAYMENT:
       case STEPS.QUOTE:
-        return 'usage'; // <-- Highlight "Usage" for last 3 steps
+        return 'usage'; // Default to last step
       default:
         return 'vehicle';
     }
   };
+  // --- END LOGO/PROGRESS BAR FIX ---
 
   const renderStep = () => {
-    // Show spinner for final quote generation
     if (isLoading && step !== STEPS.SEARCH) {
       return <Spinner />;
     }
@@ -225,7 +234,6 @@ const GetaQuote = () => {
             onBack={() => setStep(STEPS.LICENSE)}
           />
         );
-      // 5. Add new cases to render components
       case STEPS.USAGE:
         return (
           <UsageInfo
@@ -260,28 +268,22 @@ const GetaQuote = () => {
     }
   };
 
-  // Change background color based on the step
   const getPageBackground = () => {
     switch (step) {
       case STEPS.SEARCH:
       case STEPS.DETAILS:
         return 'bg-white';
-      case STEPS.VEHICLE_INFO:
-      case STEPS.DRIVER_INFO:
-      case STEPS.LICENSE:
-      case STEPS.HISTORY:
-      case STEPS.USAGE:
-      case STEPS.PAYMENT:
-      case STEPS.QUOTE:
-        return 'bg-marshmallow'; // Use new color from CSS
       default:
-        return 'bg-white';
+        return 'bg-background-light'; // Use new light background for all form steps
     }
   };
 
   return (
     <div className={`min-h-screen ${getPageBackground()}`}>
-      <QuoteHeader activeStep={getActiveStepForHeader()} />
+      <QuoteHeader
+        activeStepId={getActiveStepId()}
+        showProgressBar={showProgressBar} // <-- Pass the prop here
+      />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {renderStep()}
       </main>

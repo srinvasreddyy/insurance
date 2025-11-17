@@ -6,20 +6,20 @@ const RadioCardDetailed = ({ name, value, label, description, checked, onChange 
   <label
     className={`relative flex items-start p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <span
       className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center mr-3 mt-1 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
     <div>
-      <span className="font-semibold text-gray-900">{label}</span>
-      <p className="text-sm text-gray-600">{description}</p>
+      <span className="font-semibold text-text-primary">{label}</span>
+      <p className="text-sm text-text-secondary">{description}</p>
     </div>
     <input
       type="radio"
@@ -37,8 +37,8 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
   <label
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <input
@@ -51,12 +51,12 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     />
     <span
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
-    <span className="font-semibold text-gray-900">{label}</span>
+    <span className="font-semibold text-text-primary">{label}</span>
   </label>
 );
 
@@ -102,12 +102,12 @@ const UsageInfo = ({ onSubmit, onBack }) => {
       transition={{ duration: 0.5 }}
       className="max-w-2xl mx-auto"
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+      <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 leading-tight">
         Tell us what you use your car for.
       </h1>
-      <p className="text-lg text-gray-700 mb-8">
+      <p className="text-lg text-text-secondary mb-8">
         This decides what kind of journeys we cover you for. Not sure?{' '}
-        <a href="#" className="text-blue-600 underline">
+        <a href="#" className="text-primary-600 underline">
           You can read more information here.
         </a>
       </p>
@@ -115,7 +115,7 @@ const UsageInfo = ({ onSubmit, onBack }) => {
       <form onSubmit={handleSubmit} className="space-y-10">
         {/* --- 1. Car Usage --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             What do you use your car for?
           </h2>
           <div className="space-y-3">
@@ -151,11 +151,11 @@ const UsageInfo = ({ onSubmit, onBack }) => {
 
         {/* --- 2. Policy Cancelled --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Have you, or any other driver on this policy, had an insurance
             policy cancelled or voided in the past?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you've had a policy cancelled or deemed invalid by an insurer,
             choose 'yes'.
           </p>
@@ -181,17 +181,17 @@ const UsageInfo = ({ onSubmit, onBack }) => {
         </div>
 
         {/* --- Navigation Buttons --- */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex justify-between items-center pt-6 border-t border-border-light">
           <button
             type="button"
             onClick={onBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-gray-200 hover:bg-gray-300 text-text-primary font-bold py-3 px-8 rounded-full transition-colors"
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-accent-pink hover:bg-accent-pink-hover text-white font-bold py-3 px-8 rounded-full transition-colors"
           >
             Continue
           </button>

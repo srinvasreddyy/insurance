@@ -6,8 +6,8 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
   <label
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <input
@@ -20,12 +20,12 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     />
     <span
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
-    <span className="font-semibold text-gray-900">{label}</span>
+    <span className="font-semibold text-text-primary">{label}</span>
   </label>
 );
 
@@ -41,13 +41,13 @@ const Checkbox = ({ label, checked, onChange }) => (
     <span
       className={`w-5 h-5 rounded border-2 flex items-center justify-center mr-3 transition-all ${
         checked
-          ? 'bg-marshmallow-green border-marshmallow-green'
-          : 'bg-white border-gray-400'
+          ? 'bg-primary-500 border-primary-500'
+          : 'bg-white border-border-dark'
       }`}
     >
       {checked && <span className="text-white text-sm font-bold">✓</span>}
     </span>
-    <span className="text-gray-800">{label}</span>
+    <span className="text-text-primary">{label}</span>
   </label>
 );
 
@@ -74,20 +74,15 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
 
   const [errors, setErrors] = useState({});
 
-  // Calculate mileage estimates when mileage or unit changes
   useEffect(() => {
     const miles =
       formData.mileageUnit === 'km'
         ? formData.mileage / 1.60934
         : formData.mileage;
-
-    // Simple estimation logic
     const lowEstimate = 0.8;
     const highEstimate = 1.2;
-
     const weeklyAvg = miles / 52;
     const dailyAvg = miles / 365;
-
     setMileageRanges({
       weekMin: Math.floor(weeklyAvg * lowEstimate),
       weekMax: Math.ceil(weeklyAvg * highEstimate),
@@ -182,17 +177,16 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
       transition={{ duration: 0.5 }}
       className="max-w-2xl mx-auto"
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+      <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight">
         Let's talk about your {vehicleData.manufacturer} {vehicleData.model}
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-10">
-        {/* --- 1. Buy Date --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             When did you buy this vehicle?
           </h2>
-          <p className="text-sm text-gray-600">For example, 3 2007</p>
+          <p className="text-sm text-text-secondary">For example, 3 2007</p>
           <div className="flex gap-4">
             <input
               type="number"
@@ -201,7 +195,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
               value={formData.buyMonth}
               onChange={handleChange}
               disabled={formData.notPurchased}
-              className="w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green disabled:bg-gray-100"
+              className="w-1/2 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:bg-gray-100"
             />
             <input
               type="number"
@@ -210,7 +204,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
               value={formData.buyYear}
               onChange={handleChange}
               disabled={formData.notPurchased}
-              className="w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green disabled:bg-gray-100"
+              className="w-1/2 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:bg-gray-100"
             />
           </div>
           {errors.buyDate && (
@@ -230,12 +224,11 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           />
         </div>
 
-        {/* --- 2. Registered Keeper --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Who is this car registered to? Or who will it be registered to?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             You'll find the registered keeper on the vehicle's V5 document.
           </p>
           <div className="grid grid-cols-2 gap-4">
@@ -258,27 +251,24 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
             <p className="text-red-600 text-sm">{errors.registeredKeeper}</p>
           )}
 
-          {/* Conditional Dropdown */}
           {formData.registeredKeeper === 'someone-else' && (
             <motion.div
               initial={{ opacity: 0, height: 0, marginTop: 0 }}
               animate={{ opacity: 1, height: 'auto', marginTop: '1rem' }}
               className="space-y-2"
             >
-              <label className="font-semibold text-gray-800">
+              <label className="font-semibold text-text-primary">
                 Relation to you
               </label>
               <select
                 name="keeperRelation"
                 value={formData.keeperRelation}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                className="w-full p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
               >
                 <option value="">Select relation...</option>
                 {relationOptions.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
+                  <option key={opt} value={opt}>{opt}</option>
                 ))}
               </select>
               {errors.keeperRelation && (
@@ -288,12 +278,11 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 3. Overnight Parking --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Where do you usually park your vehicle overnight?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             For example, do you park it on a driveway? On the road outside your
             house? In a car park?
           </p>
@@ -301,7 +290,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
             name="parkingLocation"
             value={formData.parkingLocation}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+            className="w-full p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
           >
             <option value="">Select location</option>
             {parkingOptions.map((opt) => (
@@ -315,28 +304,23 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 4. Annual Mileage --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             How many miles do you drive in a year?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             This is our estimate based on what you use your car for. But you know
             best! Feel free to adjust.
           </p>
 
-          <div className="bg-marshmallow-field p-6 rounded-lg">
+          <div className="bg-background-field p-6 rounded-lg">
             <div className="text-right mb-2">
               <span className="text-sm">up to</span>
-              <span className="text-3xl font-bold text-gray-900 mx-2">
+              <span className="text-3xl font-bold text-text-primary mx-2">
                 {new Intl.NumberFormat().format(formData.mileage)}
               </span>
               <span className="text-sm">{formData.mileageUnit} a year</span>
             </div>
-            {/* *** HERE IS THE FIX ***
-              The styling for the slider thumb is now directly in the className.
-              This removes the need for the separate .range-thumb CSS class.
-            */}
             <input
               type="range"
               name="mileage"
@@ -345,27 +329,10 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
               step="500"
               value={formData.mileage}
               onChange={handleChange}
-              className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer
-                [&::-webkit-slider-thumb]:-mt-[10px]
-                [&::-webkit-slider-thumb]:appearance-none
-                [&::-webkit-slider-thumb]:h-6
-                [&::-webkit-slider-thumb]:w-6
-                [&::-webkit-slider-thumb]:rounded-full
-                [&::-webkit-slider-thumb]:bg-marshmallow-green
-                [&::-webkit-slider-thumb]:border-4
-                [&::-webkit-slider-thumb]:border-white
-                [&::-webkit-slider-thumb]:shadow
-                
-                [&::-moz-range-thumb]:h-6
-                [&::-moz-range-thumb]:w-6
-                [&::-moz-range-thumb]:rounded-full
-                [&::-moz-range-thumb]:bg-marshmallow-green
-                [&::-moz-range-thumb]:border-4
-                [&::-moz-range-thumb]:border-white
-                [&::-moz-range-thumb]:shadow"
+              className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer range-thumb"
             />
 
-            <div className="flex justify-between text-sm text-gray-600 mt-4">
+            <div className="flex justify-between text-sm text-text-secondary mt-4">
               <p>
                 That's roughly <br />
                 <strong>
@@ -391,7 +358,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
                   className={`px-4 py-1 rounded-full text-sm font-semibold ${
                     formData.mileageUnit === 'miles'
                       ? 'bg-white shadow'
-                      : 'text-gray-600'
+                      : 'text-text-secondary'
                   }`}
                 >
                   Miles
@@ -404,7 +371,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
                   className={`px-4 py-1 rounded-full text-sm font-semibold ${
                     formData.mileageUnit === 'km'
                       ? 'bg-white shadow'
-                      : 'text-gray-600'
+                      : 'text-text-secondary'
                   }`}
                 >
                   Kilometers
@@ -414,9 +381,8 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           </div>
         </div>
 
-        {/* --- 5. Household Cars --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             How many cars are kept at this household (including this one)?
           </h2>
           <div className="grid grid-cols-5 gap-3">
@@ -425,8 +391,8 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
                 key={num}
                 className={`relative flex items-center justify-center p-4 rounded-lg cursor-pointer transition-all ${
                   formData.householdCars === num.toString()
-                    ? 'bg-white border-2 border-marshmallow-green shadow-md'
-                    : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+                    ? 'bg-white border-2 border-primary-500 shadow-md'
+                    : 'bg-background-field border border-border-light hover:bg-white'
                 }`}
               >
                 <input
@@ -437,7 +403,7 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
                   onChange={handleChange}
                   className="absolute opacity-0 w-0 h-0"
                 />
-                <span className="font-semibold text-gray-900">{num}</span>
+                <span className="font-semibold text-text-primary">{num}</span>
               </label>
             ))}
           </div>
@@ -446,12 +412,11 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 6. Other Vehicle Access --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Do you have access to any other vehicles?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you’re insured to drive any other vehicle, as a main driver or an
             additional driver, choose ‘yes’.
           </p>
@@ -476,18 +441,17 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- Navigation Buttons --- */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex justify-between items-center pt-6 border-t border-border-light">
           <button
             type="button"
             onClick={onBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-gray-200 hover:bg-gray-300 text-text-primary font-bold py-3 px-8 rounded-full transition-colors"
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-accent-pink hover:bg-accent-pink-hover text-white font-bold py-3 px-8 rounded-full transition-colors"
           >
             Continue
           </button>

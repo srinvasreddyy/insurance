@@ -6,8 +6,8 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
   <label
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <input
@@ -20,12 +20,12 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     />
     <span
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
-    <span className="font-semibold text-gray-900">{label}</span>
+    <span className="font-semibold text-text-primary">{label}</span>
   </label>
 );
 
@@ -50,7 +50,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
     otherCountry: '',
     otherLicenceMonth: '',
     otherLicenceYear: '',
-    otherLicenceNumber: '', // <-- New state for other licence number
+    otherLicenceNumber: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -83,7 +83,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
       if (!formData.ukLicenceMonth || !formData.ukLicenceYear) {
         newErrors.ukLicenceDate = 'Please select a month and year.';
       }
-      if (!formData.licenceNumber) { // Changed from length check to simple presence
+      if (!formData.licenceNumber) {
         newErrors.licenceNumber = 'Please enter your driving licence number.';
       }
       if (!formData.hasOtherCountryLicence) {
@@ -95,7 +95,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
       if (!formData.otherCountry) {
         newErrors.otherCountry = 'Please enter the country.';
       }
-      if (!formData.otherLicenceNumber) { // <-- New validation
+      if (!formData.otherLicenceNumber) {
         newErrors.otherLicenceNumber = 'Please enter your driving licence number from that country.';
       }
       if (!formData.otherLicenceMonth || !formData.otherLicenceYear) {
@@ -130,10 +130,10 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
       transition={{ duration: 0.5 }}
       className="max-w-2xl mx-auto"
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+      <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 leading-tight">
         A little bit about your driver’s licence
       </h1>
-      <p className="text-lg text-gray-700 mb-8">
+      <p className="text-lg text-text-secondary mb-8">
         Don’t have a full UK licence yet? Don’t worry. We can cover full licences
         from any country, as well as provisional UK licences.
       </p>
@@ -141,10 +141,10 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
       <form onSubmit={handleSubmit} className="space-y-10">
         {/* --- 1. Licence Type --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             What type of licence do you have?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you have a UK licence (full or provisional), use that to get our
             best price. We’ll still ask about your driving experience in other
             countries to give you even bigger savings.
@@ -153,7 +153,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
             name="licenceType"
             value={formData.licenceType}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+            className="w-full p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
           >
             <option value="">Select licence type</option>
             {licenceTypeOptions.map((opt) => (
@@ -176,12 +176,11 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
               exit={{ opacity: 0, height: 0 }}
               className="space-y-10 overflow-hidden"
             >
-              {/* UK Licence Date */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   When did you get your {licenceTypeOptions.find(o => o.value === formData.licenceType)?.label.toLowerCase()}?
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-text-secondary">
                   Make sure the date matches what is on your licence.
                 </p>
                 <div className="flex gap-4">
@@ -189,7 +188,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                     name="ukLicenceMonth"
                     value={formData.ukLicenceMonth}
                     onChange={handleChange}
-                    className="w-1/2 p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                    className="w-1/2 p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                   >
                     <option value="">Select month</option>
                     {monthOptions.map((month) => (
@@ -202,7 +201,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                     name="ukLicenceYear"
                     value={formData.ukLicenceYear}
                     onChange={handleChange}
-                    className="w-1/2 p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                    className="w-1/2 p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                   >
                     <option value="">Select year</option>
                     {yearOptions.map((year) => (
@@ -217,12 +216,11 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                 )}
               </div>
 
-              {/* Licence Number */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   Driving licence number
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-text-secondary">
                   This is the 16 character number above your signature.
                 </p>
                 <input
@@ -231,14 +229,13 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                   placeholder="Enter your driving licence number"
                   value={formData.licenceNumber}
                   onChange={handleChange}
-                  // maxLength="16" // Removed max length for flexibility, validation handles it
-                  className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                  className="w-full p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                 />
                 {errors.licenceNumber && (
                   <p className="text-red-600 text-sm">{errors.licenceNumber}</p>
                 )}
-                <p className="text-sm text-gray-600">
-                  <a href="#" className="text-blue-600 underline">
+                <p className="text-sm text-text-secondary">
+                  <a href="#" className="text-primary-600 underline">
                     How to find your driving licence number
                   </a>
                 </p>
@@ -249,12 +246,11 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                 </p>
               </div>
 
-              {/* Other Country Licence Radio */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   Have you held a full driver’s licence in another country before?
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-text-secondary">
                   We’ll count your driving experience from the last country you
                   lived in as well, and get you a better price.
                 </p>
@@ -284,7 +280,6 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
           )}
         </AnimatePresence>
 
-        {/* --- 3. Other Country Licence Fields (Conditional) --- */}
         <AnimatePresence>
           {showOtherCountryFields && (
             <motion.div
@@ -293,9 +288,8 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
               exit={{ opacity: 0, height: 0 }}
               className="space-y-10 overflow-hidden pt-10 border-t"
             >
-              {/* Other Country Name */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   In which country did you first pass your driving test?
                 </h2>
                 <input
@@ -304,20 +298,18 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                   placeholder="Enter country name"
                   value={formData.otherCountry}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                  className="w-full p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                 />
                 {errors.otherCountry && (
                   <p className="text-red-600 text-sm">{errors.otherCountry}</p>
                 )}
               </div>
               
-              {/* --- NEW FIELD --- */}
-              {/* Other Country Licence Number */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   Driving licence number (from that country)
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-text-secondary">
                   Please enter the licence number from your {formData.otherCountry || 'other'} licence.
                 </p>
                 <input
@@ -326,20 +318,18 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                   placeholder="Enter your driving licence number"
                   value={formData.otherLicenceNumber}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                  className="w-full p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                 />
                 {errors.otherLicenceNumber && (
                   <p className="text-red-600 text-sm">{errors.otherLicenceNumber}</p>
                 )}
               </div>
-              {/* --- END NEW FIELD --- */}
 
-              {/* Other Country Licence Date */}
               <div className="space-y-4">
-                <h2 className="text-xl font-bold text-gray-900">
+                <h2 className="text-xl font-bold text-text-primary">
                   When did you pass that first test?
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-text-secondary">
                   You may be able to find this date on your licence.
                 </p>
                 <div className="flex gap-4">
@@ -347,7 +337,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                     name="otherLicenceMonth"
                     value={formData.otherLicenceMonth}
                     onChange={handleChange}
-                    className="w-1/2 p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                    className="w-1/2 p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                   >
                     <option value="">Select month</option>
                     {monthOptions.map((month) => (
@@ -360,7 +350,7 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
                     name="otherLicenceYear"
                     value={formData.otherLicenceYear}
                     onChange={handleChange}
-                    className="w-1/2 p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+                    className="w-1/2 p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
                   >
                     <option value="">Select year</option>
                     {yearOptions.map((year) => (
@@ -378,18 +368,17 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
           )}
         </AnimatePresence>
 
-        {/* --- Navigation Buttons --- */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex justify-between items-center pt-6 border-t border-border-light">
           <button
             type="button"
             onClick={onBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-gray-200 hover:bg-gray-300 text-text-primary font-bold py-3 px-8 rounded-full transition-colors"
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-accent-pink hover:bg-accent-pink-hover text-white font-bold py-3 px-8 rounded-full transition-colors"
           >
             Continue
           </button>

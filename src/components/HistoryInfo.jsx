@@ -6,8 +6,8 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
   <label
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <input
@@ -20,19 +20,19 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     />
     <span
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
-    <span className="font-semibold text-gray-900">{label}</span>
+    <span className="font-semibold text-text-primary">{label}</span>
   </label>
 );
 
 const HistoryInfo = ({ onSubmit, onBack }) => {
   const [formData, setFormData] = useState({
-    claimsLast5Years: '', // <-- New field
-    convictionsLast5Years: '', // <-- New field
+    claimsLast5Years: '',
+    convictionsLast5Years: '',
     previousInsurance: '',
     criminalConvictions: '',
   });
@@ -49,10 +49,10 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.claimsLast5Years) { // <-- New validation
+    if (!formData.claimsLast5Years) {
       newErrors.claimsLast5Years = 'Please select an option for claims.';
     }
-    if (!formData.convictionsLast5Years) { // <-- New validation
+    if (!formData.convictionsLast5Years) {
       newErrors.convictionsLast5Years = 'Please select an option for motoring convictions.';
     }
     if (!formData.previousInsurance) {
@@ -79,18 +79,17 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
       transition={{ duration: 0.5 }}
       className="max-w-2xl mx-auto"
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+      <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight">
         Your driving history
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-10">
-        {/* --- 1. Claims Last 5 Years (NEW) --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Have you, or any other driver on this policy, made a claim in the
             last 5 years?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             That includes all fault and non-fault claims, settled or
             outstanding.
           </p>
@@ -115,13 +114,12 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 2. Motoring Convictions Last 5 Years (NEW) --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Have you, or any other driver on the policy, had any motoring
             convictions or fixed penalty notices in the last 5 years?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             Convictions don’t always mean higher prices. But if you have any and
             don’t tell us, your policy will be cancelled.
           </p>
@@ -148,12 +146,11 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
         
-        {/* --- 3. Previous Insurance --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Did you have car insurance in India?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             We understand insurance isn’t mandatory everywhere, but we offer
             discounts based on your full driving experience, no matter where
             you’ve driven.
@@ -179,13 +176,12 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 4. Criminal Convictions --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Have you got any unspent criminal convictions that are not motor
             related?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you have a criminal conviction that you're still in the
             rehabilitation process for, choose 'yes'.
           </p>
@@ -210,27 +206,25 @@ const HistoryInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- Disclaimer --- */}
-        <div className="p-4 bg-marshmallow-field rounded-lg border border-gray-200">
-          <h3 className="font-bold text-red-900 mb-2">Remember!</h3>
-          <p className="text-sm text-gray-600">
+        <div className="p-4 bg-background-field rounded-lg border border-border-light">
+          <h3 className="font-bold text-text-primary mb-2">Complete</h3>
+          <p className="text-sm text-text-secondary">
             Claims and convictions don’t always mean higher prices. But if you
             have any and don’t tell us, we’ll have to cancel your policy.
           </p>
         </div>
 
-        {/* --- Navigation Buttons --- */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex justify-between items-center pt-6 border-t border-border-light">
           <button
             type="button"
             onClick={onBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-gray-200 hover:bg-gray-300 text-text-primary font-bold py-3 px-8 rounded-full transition-colors"
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-accent-pink hover:bg-accent-pink-hover text-white font-bold py-3 px-8 rounded-full transition-colors"
           >
             Continue
           </button>

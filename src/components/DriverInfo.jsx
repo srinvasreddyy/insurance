@@ -6,8 +6,8 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
   <label
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
-        ? 'bg-white border-2 border-marshmallow-green shadow-md'
-        : 'bg-marshmallow-field border border-gray-200 hover:bg-white'
+        ? 'bg-white border-2 border-primary-500 shadow-md'
+        : 'bg-background-field border border-border-light hover:bg-white'
     }`}
   >
     <input
@@ -20,12 +20,12 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     />
     <span
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
-        checked ? 'border-marshmallow-green' : 'border-gray-400'
+        checked ? 'border-primary-500' : 'border-border-dark'
       }`}
     >
-      {checked && <span className="w-2.5 h-2.5 rounded-full bg-marshmallow-green" />}
+      {checked && <span className="w-2.5 h-2.5 rounded-full bg-primary-500" />}
     </span>
-    <span className="font-semibold text-gray-900">{label}</span>
+    <span className="font-semibold text-text-primary">{label}</span>
   </label>
 );
 
@@ -38,7 +38,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
     propertyOwner: '',
     isStudent: '',
     medicalCondition: '',
-    employmentStatus: '', // <-- New field
+    employmentStatus: '',
     referralSource: '',
   });
 
@@ -54,11 +54,9 @@ const DriverInfo = ({ onSubmit, onBack }) => {
 
   const validate = () => {
     const newErrors = {};
-    // Simple DOB check
     if (!formData.dobDay || !formData.dobMonth || !formData.dobYear) {
       newErrors.dob = 'Please enter a valid date of birth.';
     }
-    // Simple postcode check
     if (formData.postcode.length < 5) {
       newErrors.postcode = 'Please enter a valid UK postcode.';
     }
@@ -71,7 +69,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
     if (!formData.medicalCondition) {
       newErrors.medicalCondition = 'Please select an option for medical conditions.';
     }
-    if (!formData.employmentStatus) { // <-- New validation
+    if (!formData.employmentStatus) {
       newErrors.employmentStatus = 'Please select your employment status.';
     }
     if (!formData.referralSource) {
@@ -88,7 +86,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
     }
   };
 
-  const employmentOptions = [ // <-- New options
+  const employmentOptions = [
     'Employed',
     'Self-Employed',
     'Unemployed',
@@ -114,17 +112,16 @@ const DriverInfo = ({ onSubmit, onBack }) => {
       transition={{ duration: 0.5 }}
       className="max-w-2xl mx-auto"
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+      <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight">
         Let's talk about you
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-10">
-        {/* --- 1. Date of Birth --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             What's your date of birth?
           </h2>
-          <p className="text-sm text-gray-600">For example, 27 3 2007</p>
+          <p className="text-sm text-text-secondary">For example, 27 3 2007</p>
           <div className="flex gap-4">
             <input
               type="number"
@@ -132,7 +129,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="DAY"
               value={formData.dobDay}
               onChange={handleChange}
-              className="w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+              className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
             <input
               type="number"
@@ -140,7 +137,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="MONTH"
               value={formData.dobMonth}
               onChange={handleChange}
-              className="w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+              className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
             <input
               type="number"
@@ -148,18 +145,17 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="YEAR"
               value={formData.dobYear}
               onChange={handleChange}
-              className="w-1/3 p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+              className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
           </div>
           {errors.dob && <p className="text-red-600 text-sm">{errors.dob}</p>}
         </div>
 
-        {/* --- 2. Postcode --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Where do you live?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             Search using your postcode. This is the last line of your UK address.
             It includes letters and numbers.
           </p>
@@ -169,23 +165,22 @@ const DriverInfo = ({ onSubmit, onBack }) => {
             placeholder="Enter postcode"
             value={formData.postcode}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+            className="w-full p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
           />
           {errors.postcode && (
             <p className="text-red-600 text-sm">{errors.postcode}</p>
           )}
           <p className="text-xs text-gray-500">
             We may ask you for proof of address after you pay. You can provide this
-            using one of {' '}
-            <a href="#" className="text-blue-600 underline">
+            using one of{' '}
+            <a href="#" className="text-primary-600 underline">
               these documents
             </a>.
           </p>
         </div>
 
-        {/* --- 3. Property Owner --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Do you own this property, or any other property in the UK?
           </h2>
           <div className="grid grid-cols-2 gap-4">
@@ -209,12 +204,11 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 4. Student Status --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Are you a student?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you are currently enrolled at a college, university or similar
             institution, choose 'yes'.
           </p>
@@ -239,16 +233,15 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 5. Medical Condition --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Do you have a medical condition that requires you to notify the DVLA?
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-text-secondary">
             If you have a medical condition that could affect your ability to
             drive safely, you must tell the DVLA. You can find a list of these
             medical conditions{' '}
-            <a href="#" className="text-blue-600 underline">
+            <a href="#" className="text-primary-600 underline">
               here
             </a>.
           </p>
@@ -273,16 +266,15 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 6. Employment Status (NEW) --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Are you employed?
           </h2>
           <select
             name="employmentStatus"
             value={formData.employmentStatus}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+            className="w-full p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
           >
             <option value="">Select an option...</option>
             {employmentOptions.map((opt) => (
@@ -296,16 +288,15 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- 7. Referral Source --- */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-text-primary">
             Where did you hear about us?
           </h2>
           <select
             name="referralSource"
             value={formData.referralSource}
             onChange={handleChange}
-            className="w-full p-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-marshmallow-green focus:ring-1 focus:ring-marshmallow-green"
+            className="w-full p-3 rounded-lg border border-border-light bg-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
           >
             <option value="">Select an option...</option>
             {referralOptions.map((opt) => (
@@ -319,18 +310,17 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           )}
         </div>
 
-        {/* --- Navigation Buttons --- */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <div className="flex justify-between items-center pt-6 border-t border-border-light">
           <button
             type="button"
             onClick={onBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-gray-200 hover:bg-gray-300 text-text-primary font-bold py-3 px-8 rounded-full transition-colors"
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+            className="bg-accent-pink hover:bg-accent-pink-hover text-white font-bold py-3 px-8 rounded-full transition-colors"
           >
             Continue
           </button>
