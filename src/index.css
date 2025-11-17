@@ -8,3 +8,48 @@ html, body {
 * {
     font-family: "Stack Sans Text", sans-serif;
 }
+
+/* Custom colors from the screenshot */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-marshmallow: #fcf8f3;
+    --color-marshmallow-green: #86b86b;
+    --color-marshmallow-gray: #d1ccc6;
+    --color-marshmallow-field: #f4f1ed;
+  }
+}
+
+/* These are the classes that your components need.
+  They apply the colors defined in :root above.
+*/
+.bg-marshmallow {
+  background-color: var(--color-marshmallow);
+}
+.text-marshmallow-green {
+  color: var(--color-marshmallow-green);
+}
+.text-marshmallow-gray {
+  color: var(--color-marshmallow-gray);
+}
+.border-marshmallow-green {
+  border-color: var(--color-marshmallow-green);
+}
+.border-marshmallow-gray {
+  border-color: var(--color-marshmallow-gray);
+}
+.bg-marshmallow-green {
+  background-color: var(--color-marshmallow-green);
+}
+.bg-marshmallow-field {
+  background-color: var(--color-marshmallow-field);
+}
+.focus\:border-marshmallow-green:focus {
+  border-color: var(--color-marshmallow-green);
+}
+.focus\:ring-marshmallow-green:focus {
+  --tw-ring-color: var(--color-marshmallow-green);
+}
