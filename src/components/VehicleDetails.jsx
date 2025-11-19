@@ -2,11 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const VehicleDetails = ({ vehicleData, onChangeVehicle, onContinue }) => {
+  const formatBool = (v) => (v === true || v === 'true' ? 'Yes' : v === false || v === 'false' ? 'No' : v || '—');
+
   const EditableRow = ({ label, value }) => (
     <div className="flex justify-between items-center py-4 border-b border-border-light">
       <div>
         <span className="text-sm text-text-secondary">{label}</span>
-        <p className="text-text-primary font-medium">{value}</p>
+        <p className="text-text-primary font-medium">{value ?? '—'}</p>
       </div>
       <button className="font-semibold text-primary-600 hover:text-primary-700 text-sm">
         Edit
@@ -26,7 +28,7 @@ const VehicleDetails = ({ vehicleData, onChangeVehicle, onContinue }) => {
         <div className="grid grid-cols-2 gap-x-4 gap-y-3">
           <div>
             <span className="text-sm text-text-secondary">Licence plate:</span>
-            <p className="font-bold text-text-primary">{vehicleData.plate}</p>
+            <p className="font-bold text-text-primary">{vehicleData.plate || vehicleData.vrm}</p>
           </div>
           <div>
             <span className="text-sm text-text-secondary">Manufacturer:</span>
@@ -40,17 +42,15 @@ const VehicleDetails = ({ vehicleData, onChangeVehicle, onContinue }) => {
           </div>
           <div className="col-span-2">
             <span className="text-sm text-text-secondary">Trim:</span>
-            <p className="font-bold text-text-primary">{vehicleData.trim}</p>
+            <p className="font-bold text-text-primary">{vehicleData.trim || vehicleData.subModel || '—'}</p>
           </div>
           <div>
             <span className="text-sm text-text-secondary">Year:</span>
-            <p className="font-bold text-text-primary">{vehicleData.year}</p>
+            <p className="font-bold text-text-primary">{vehicleData.year || vehicleData.yearOfManufacture || '—'}</p>
           </div>
           <div>
             <span className="text-sm text-text-secondary">Transmission:</span>
-            <p className="font-bold text-text-primary">
-              {vehicleData.transmission}
-            </p>
+            <p className="font-bold text-text-primary">{vehicleData.transmission || vehicleData.gearbox || 'Unknown'}</p>
           </div>
           <div>
             <span className="text-sm text-text-secondary">Fuel type:</span>
@@ -58,7 +58,15 @@ const VehicleDetails = ({ vehicleData, onChangeVehicle, onContinue }) => {
           </div>
           <div>
             <span className="text-sm text-text-secondary">Engine size:</span>
-            <p className="font-bold text-text-primary">{vehicleData.engineSize}</p>
+            <p className="font-bold text-text-primary">{vehicleData.engineSize || vehicleData.engineCapacity || (vehicleData.engine ? vehicleData.engine : '—')}</p>
+          </div>
+          <div>
+            <span className="text-sm text-text-secondary">Colour:</span>
+            <p className="font-bold text-text-primary">{vehicleData.colour || vehicleData.color || '—'}</p>
+          </div>
+          <div>
+            <span className="text-sm text-text-secondary">CO₂ emissions:</span>
+            <p className="font-bold text-text-primary">{vehicleData.co2Emissions ?? vehicleData.co2 ?? '—'}</p>
           </div>
         </div>
       </div>
@@ -76,13 +84,13 @@ const VehicleDetails = ({ vehicleData, onChangeVehicle, onContinue }) => {
         right?
       </h3>
       <div className="divide-y divide-border-light">
-        <EditableRow label="Vehicle value:" value={vehicleData.value} />
-        <EditableRow label="Import:" value={vehicleData.isImport} />
+        <EditableRow label="Vehicle value:" value={vehicleData.value || vehicleData.valuation || '—'} />
+        <EditableRow label="Import:" value={formatBool(vehicleData.isImport)} />
         <EditableRow
           label="Right or left hand drive:"
-          value={vehicleData.driveSide}
+          value={vehicleData.driveSide || vehicleData.drive || 'Right'}
         />
-        <EditableRow label="Number of seats:" value={vehicleData.seats} />
+        <EditableRow label="Number of seats:" value={vehicleData.seats || vehicleData.numberOfSeats || '—'} />
       </div>
 
       <div className="flex justify-between items-center mt-12">

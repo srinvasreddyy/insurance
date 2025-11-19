@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthModal } from '../context/AuthModalContext';
+import { auth } from '../api/apiClient';
 
 const RegisterModal = () => {
   const { modalState, openLoginModal, openOTPModal, setLoading, setError } = useAuthModal();
@@ -25,23 +26,16 @@ const RegisterModal = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+      const data = await auth.register(email, password);
 
-      const data = await response.json();
-
-      if (data.success) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
+      // Backend register returns a success message and triggers an email OTP.
+      if (data && data.success) {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
         openOTPModal(email);
       } else {
-        setError(data.message || 'Registration failed');
+        setError((data && (data.message || data.data)) || 'Registration failed');
       }
     } catch (err) {
       setError(err.message || 'An error occurred');

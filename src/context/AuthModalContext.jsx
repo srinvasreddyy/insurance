@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { auth } from '../api/apiClient';
 
 const AuthModalContext = createContext(null);
 

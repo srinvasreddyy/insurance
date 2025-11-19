@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthModal } from '../context/AuthModalContext';
+import { vehicle as vehicleApi, quote as quoteApi } from '../api/apiClient';
 import GetQuoteHero from '../components/GetQuoteHero';
 import QuoteHeader from '../components/QuoteHeader';
 import VehicleDetails from '../components/VehicleDetails';
@@ -13,29 +14,24 @@ import QuoteDisplay from '../components/QuoteDisplay';
 import Spinner from '../components/Spinner';
 
 // Mock data
-const mockVehicleData = {
-  plate: 'EF13GZJ',
-  manufacturer: 'HYUNDAI',
-  model: 'i40 ACTIVE BLUE DRIVE CRDI',
-  trim: '4dr saloon 1.7 crdi blue drive dpf ss 136 eu5 active 6spd',
-  year: '2013',
-  transmission: 'Manual',
-  fuelType: 'Diesel',
-  engineSize: '1685',
-  value: '£2,200',
-  isImport: 'No',
-  driveSide: 'Right',
-  seats: '5',
-};
+// const mockVehicleData = {
+//   plate: 'EF13GZJ',
+//   manufacturer: 'HYUNDAI',
+//   model: 'i40 ACTIVE BLUE DRIVE CRDI',
+//   trim: '4dr saloon 1.7 crdi blue drive dpf ss 136 eu5 active 6spd',
+//   year: '2013',
+//   transmission: 'Manual',
+//   fuelType: 'Diesel',
+//   engineSize: '1685',
+//   value: '£2,200',
+//   isImport: 'No',
+//   driveSide: 'Right',
+//   seats: '5',
+// };
 
-// Mock API call
-const fetchVehicleDetails = (plate) => {
-  console.log('API call for:', plate);
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockVehicleData);
-    }, 1500); // 1.5 second delay
-  });
+// API call via backend
+const fetchVehicleDetails = async (plate) => {
+  return await vehicleApi.search(plate);
 };
 
 // Define step names
@@ -60,6 +56,7 @@ const GetaQuote = () => {
   const [quotePrice, setQuotePrice] = useState(null);
 
   const [quoteData, setQuoteData] = useState({});
+  const [quoteId, setQuoteId] = useState(() => localStorage.getItem('quoteId') || null);
 
   useEffect(() => {
     const navBar = document.querySelector('nav');
@@ -79,11 +76,13 @@ const GetaQuote = () => {
     setIsLoading(true);
     setApiError(null);
     try {
-      const data = await fetchVehicleDetails(plate);
+      const res = await fetchVehicleDetails(plate);
+      // API returns { success, source, data }
+      const data = res && (res.data || res);
       setVehicleData(data);
       setStep(STEPS.DETAILS);
     } catch (err) {
-      setApiError('Could not find vehicle details. Please try again.');
+      setApiError(err.message || 'Could not find vehicle details. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -95,52 +94,157 @@ const GetaQuote = () => {
   };
 
   const handleDetailsContinue = () => {
+    // Advance the UI immediately so the user can fill the next form.
     setStep(STEPS.VEHICLE_INFO);
+
+    // Create the quote in background; we'll persist the returned id when available.
+    (async () => {
+      setApiError(null);
+      try {
+        const res = await quoteApi.start(vehicleData);
+        const created = res && (res.data || res);
+        const id = (created && (created._id || created.id)) || null;
+        if (id) {
+          setQuoteData(prev => ({ ...prev, quoteId: id }));
+          setQuoteId(id);
+          localStorage.setItem('quoteId', id);
+        }
+      } catch (err) {
+        // Don't block the user — just surface an error message
+        console.error('Failed to start quote:', err);
+        setApiError(err.message || 'Failed to start quote');
+      }
+    })();
   };
 
   const handleVehicleInfoSubmit = (info) => {
-    setQuoteData((prev) => ({ ...prev, vehicleInfo: info }));
-    console.log('Vehicle Info Submitted:', info);
+    // Advance UI immediately
     setStep(STEPS.DRIVER_INFO);
+
+    // Send data to backend in background (don't block user)
+    (async () => {
+      try {
+        setIsLoading(true);
+        setApiError(null);
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'vehicle-info', info);
+        const updated = res && (res.data || res);
+        setQuoteData((prev) => ({ ...prev, vehicleInfo: info, quote: updated }));
+      } catch (err) {
+        setApiError(err.message || 'Failed to save vehicle info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const handleDriverInfoSubmit = (info) => {
-    setQuoteData((prev) => ({ ...prev, driverInfo: info }));
-    console.log('Driver Info Submitted:', info);
+    // Advance UI immediately
     setStep(STEPS.LICENSE);
+
+    (async () => {
+      try {
+        setIsLoading(true);
+        setApiError(null);
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'driver-info', info);
+        const updated = res && (res.data || res);
+        setQuoteData((prev) => ({ ...prev, driverInfo: info, quote: updated }));
+      } catch (err) {
+        setApiError(err.message || 'Failed to save driver info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const handleLicenseInfoSubmit = (info) => {
-    setQuoteData((prev) => ({ ...prev, licenseInfo: info }));
-    console.log('License Info Submitted:', info);
+    // Advance UI immediately
     setStep(STEPS.HISTORY);
+
+    (async () => {
+      try {
+        setIsLoading(true);
+        setApiError(null);
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'license-info', info);
+        const updated = res && (res.data || res);
+        setQuoteData((prev) => ({ ...prev, licenseInfo: info, quote: updated }));
+      } catch (err) {
+        setApiError(err.message || 'Failed to save license info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const handleHistoryInfoSubmit = (info) => {
-    setQuoteData((prev) => ({ ...prev, historyInfo: info }));
-    console.log('History Info Submitted:', info);
+    // Advance UI immediately
     setStep(STEPS.USAGE);
+
+    (async () => {
+      try {
+        setIsLoading(true);
+        setApiError(null);
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'history-info', info);
+        const updated = res && (res.data || res);
+        setQuoteData((prev) => ({ ...prev, historyInfo: info, quote: updated }));
+      } catch (err) {
+        setApiError(err.message || 'Failed to save history info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const handleUsageInfoSubmit = (info) => {
-    setQuoteData((prev) => ({ ...prev, usageInfo: info }));
-    console.log('Usage Info Submitted:', info);
+    // Advance UI immediately
     setStep(STEPS.PAYMENT);
+
+    (async () => {
+      try {
+        setIsLoading(true);
+        setApiError(null);
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'usage-info', info);
+        const updated = res && (res.data || res);
+        setQuoteData((prev) => ({ ...prev, usageInfo: info, quote: updated }));
+      } catch (err) {
+        setApiError(err.message || 'Failed to save usage info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   const handlePaymentInfoSubmit = (info) => {
-    const finalData = { ...quoteData, paymentInfo: info };
-    setQuoteData(finalData);
-    console.log('--- ALL QUOTE DATA ---', finalData);
+    (async () => {
+      setIsLoading(true);
+      setApiError(null);
+      try {
+        const qid = quoteId || quoteData.quoteId;
+        if (!qid) throw new Error('No quote ID available');
+        const res = await quoteApi.updateStep(qid, 'payment-info', info);
+        const updated = res && (res.data || res);
+        const finalData = { ...quoteData, paymentInfo: info, quote: updated };
+        setQuoteData(finalData);
 
-    setIsLoading(true);
-    const randomPrice = (Math.random() * (300 - 200) + 200).toFixed(2);
-    setQuotePrice(randomPrice);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      setStep(STEPS.QUOTE);
-    }, 1500);
+        // Quote completed — show price (backend does not calculate price here, so keep UI random)
+        const randomPrice = (Math.random() * (300 - 200) + 200).toFixed(2);
+        setQuotePrice(randomPrice);
+        setStep(STEPS.QUOTE);
+      } catch (err) {
+        setApiError(err.message || 'Failed to save payment info');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   };
 
   // --- LOGIC FOR PROGRESS BAR ---
@@ -158,27 +262,19 @@ const GetaQuote = () => {
 
   // This tells the header which step to light up
   const getActiveStepId = () => {
-    switch (step) {
-      case STEPS.VEHICLE_INFO:
-        return 'vehicle';
-      case STEPS.DRIVER_INFO:
-        return 'drivers';
-      case STEPS.LICENSE:
-        return 'license';
-      case STEPS.HISTORY:
-        return 'history';
-      case STEPS.USAGE:
-        return 'usage';
-      // For steps before/after, we still need to know where to highlight
-      case STEPS.SEARCH:
-      case STEPS.DETAILS:
-        return 'vehicle'; // Default to first step
-      case STEPS.PAYMENT:
-      case STEPS.QUOTE:
-        return 'usage'; // Default to last step
-      default:
-        return 'vehicle';
-    }
+    const map = {
+      [STEPS.SEARCH]: 'vehicle',
+      [STEPS.DETAILS]: 'vehicle',
+      [STEPS.VEHICLE_INFO]: 'vehicle',
+      [STEPS.DRIVER_INFO]: 'drivers',
+      [STEPS.LICENSE]: 'license',
+      [STEPS.HISTORY]: 'history',
+      [STEPS.USAGE]: 'usage',
+      [STEPS.PAYMENT]: 'usage',
+      [STEPS.QUOTE]: 'usage'
+    };
+
+    return map[step] || 'vehicle';
   };
   // --- END LOGO/PROGRESS BAR FIX ---
 

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuthModal } from '../context/AuthModalContext';
+import { auth } from '../api/apiClient';
 
 const OTPModal = () => {
   const { modalState, closeModal, setLoading, setError } = useAuthModal();
@@ -49,27 +50,21 @@ const OTPModal = () => {
     setError('');
 
     try {
-      const token = localStorage.getItem('token');
-      
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ code: otpCode })
-      });
+      // Send email + code (backend expects both)
+      const data = await auth.verifyOTP(modalState.email, otpCode);
 
-      const data = await response.json();
-
-      if (data.success) {
-        const user = JSON.parse(localStorage.getItem('user'));
-        user.isVerified = true;
-        localStorage.setItem('user', JSON.stringify(user));
+      if (data && data.success) {
+        // Save token + user
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+        }
+        if (data.user) {
+          localStorage.setItem('user', JSON.stringify(data.user));
+        }
         closeModal();
         setOtp(['', '', '', '', '', '']);
       } else {
-        setError(data.message || 'Invalid OTP');
+        setError((data && (data.message || data.data)) || 'Invalid OTP');
       }
     } catch (err) {
       setError(err.message || 'An error occurred');
@@ -82,24 +77,13 @@ const OTPModal = () => {
     setError('');
 
     try {
-      const token = localStorage.getItem('token');
-      
-      const response = await fetch('/api/auth/send-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
+      const data = await auth.resendVerification(modalState.email);
+      if (data && data.success) {
         setResendTimer(60);
         setOtp(['', '', '', '', '', '']);
         inputRefs.current[0]?.focus();
       } else {
-        setError(data.message || 'Failed to resend OTP');
+        setError((data && (data.message || data.data)) || 'Failed to resend OTP');
       }
     } catch (err) {
       setError(err.message || 'An error occurred');

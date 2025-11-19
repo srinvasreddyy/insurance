@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthModal } from '../context/AuthModalContext';
+import { auth } from '../api/apiClient';
 
 const LoginModal = () => {
   const { modalState, openRegisterModal, openOTPModal, closeModal, setLoading, setError } = useAuthModal();
@@ -23,16 +24,9 @@ const LoginModal = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
+      const data = await auth.login(email, password);
 
-      const data = await response.json();
-
-      if (data.success) {
-        localStorage.setItem('token', data.token);
+      if (data && data.success) {
         localStorage.setItem('user', JSON.stringify(data.user));
 
         if (data.user.isVerified) {
@@ -44,7 +38,7 @@ const LoginModal = () => {
         setEmail('');
         setPassword('');
       } else {
-        setError(data.message || 'Login failed');
+        setError((data && (data.message || data.data)) || 'Login failed');
       }
     } catch (err) {
       setError(err.message || 'An error occurred');

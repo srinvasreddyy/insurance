@@ -7,18 +7,18 @@ const RadioCard = ({ name, value, label, checked, onChange }) => (
     className={`relative flex items-center p-4 rounded-lg cursor-pointer transition-all ${
       checked
         ? 'bg-white border-2 border-primary-500 shadow-md'
-        : 'bg-background-field border border-border-light hover:bg-white'
-    }`}
+        : 'bg-background-field border border-border-light hover:bg-white' 
+    }`} 
   >
-    <input
-      type="radio"
-      name={name}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-      className="absolute opacity-0 w-0 h-0"
+    <input 
+      type="radio" 
+      name={name} 
+      value={value} 
+      checked={checked} 
+      onChange={onChange} 
+      className="absolute opacity-0 w-0 h-0" 
     />
-    <span
+    <span 
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 ${
         checked ? 'border-primary-500' : 'border-border-dark'
       }`}

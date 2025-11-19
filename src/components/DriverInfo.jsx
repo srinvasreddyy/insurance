@@ -211,7 +211,7 @@ const DriverInfo = ({ onSubmit, onBack }) => {
           <p className="text-sm text-text-secondary">
             If you are currently enrolled at a college, university or similar
             institution, choose 'yes'.
-          </p>
+          </p> 
           <div className="grid grid-cols-2 gap-4">
             <RadioCard
               name="isStudent"
