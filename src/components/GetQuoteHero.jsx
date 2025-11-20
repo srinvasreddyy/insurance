@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 export default function GetQuoteHero({
   onFindVehicle,
-  onSearchByMakeModel,
   isLoading,
   apiError,
 }) {
@@ -107,13 +106,7 @@ export default function GetQuoteHero({
               </button>
             </div>
 
-            <button
-              onClick={onSearchByMakeModel}
-              className="text-text-primary font-semibold underline hover:text-primary-600 transition-colors text-sm disabled:opacity-50"
-              disabled={isLoading}
-            >
-              Search for a vehicle by make and model
-            </button>
+            {/* make/model search removed per UX decision */}
           </div>
         </div>
 

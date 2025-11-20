@@ -38,7 +38,7 @@ const fetchVehicleDetails = async (plate) => {
 const STEPS = {
   SEARCH: 'search',
   DETAILS: 'details',
-    DATA_WRONG: 'dataWrong',
+  DATA_WRONG: 'dataWrong',
   VEHICLE_INFO: 'vehicleInfo',
   DRIVER_INFO: 'driverInfo',
   LICENSE: 'license',
