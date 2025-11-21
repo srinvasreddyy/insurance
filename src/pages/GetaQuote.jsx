@@ -318,7 +318,7 @@ const GetaQuote = () => {
         return (
           <GetQuoteHero
             onFindVehicle={handleFindVehicle}
-            onSearchByMakeModel={() => console.log('Search by make/model')}
+            onSearchByMakeModel={() => {}}
             isLoading={isLoading}
             apiError={apiError}
           />
@@ -423,7 +423,7 @@ const GetaQuote = () => {
         return (
           <GetQuoteHero
             onFindVehicle={handleFindVehicle}
-            onSearchByMakeModel={() => console.log('Search by make/model')}
+            onSearchByMakeModel={() => {}}
             isLoading={isLoading}
             apiError={apiError}
           />

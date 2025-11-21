@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Reusable custom radio button component
@@ -54,6 +54,15 @@ const LicenseInfo = ({ onSubmit, onBack }) => {
   });
 
   const [errors, setErrors] = useState({});
+
+  // Scroll to top when this step mounts so the user always starts at the top
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

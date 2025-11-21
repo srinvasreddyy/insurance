@@ -29,7 +29,7 @@ export default function VehicleSearchByMakeModel() {
     if (!selectedMake) {
       setError('Please select a vehicle make');
     } else {
-      console.log('Selected make:', selectedMake);
+      // selectedMake
       // Navigate to next step or show confirmation
     }
   };

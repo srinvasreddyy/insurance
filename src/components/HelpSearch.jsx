@@ -6,7 +6,7 @@ export default function HelpSearch() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    // debugging: searchQuery
   };
 
   return (

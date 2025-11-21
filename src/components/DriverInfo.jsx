@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Reusable custom radio button component
@@ -44,11 +44,29 @@ const DriverInfo = ({ onSubmit, onBack }) => {
 
   const [errors, setErrors] = useState({});
 
+  // Scroll to top when this step mounts so the user always starts at the top
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }
+  }, []);
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+
+    let newValue = value;
+
+    // For date-of-birth numeric fields, sanitize input to positive integers only
+    if (name === 'dobDay' || name === 'dobMonth' || name === 'dobYear') {
+      // Remove any non-digit characters and leading zeros so values are positive
+      newValue = newValue.replace(/\D+/g, '').replace(/^0+/, '');
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: newValue,
     }));
   };
 
@@ -129,6 +147,10 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="DAY"
               value={formData.dobDay}
               onChange={handleChange}
+              min="1"
+              step="1"
+              inputMode="numeric"
+              pattern="\d*"
               className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
             <input
@@ -137,6 +159,10 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="MONTH"
               value={formData.dobMonth}
               onChange={handleChange}
+              min="1"
+              step="1"
+              inputMode="numeric"
+              pattern="\d*"
               className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
             <input
@@ -145,6 +171,10 @@ const DriverInfo = ({ onSubmit, onBack }) => {
               placeholder="YEAR"
               value={formData.dobYear}
               onChange={handleChange}
+              min="1"
+              step="1"
+              inputMode="numeric"
+              pattern="\d*"
               className="w-1/3 p-3 rounded-lg border border-border-light focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500"
             />
           </div>

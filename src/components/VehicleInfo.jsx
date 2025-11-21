@@ -74,6 +74,16 @@ const VehicleInfo = ({ vehicleData, onSubmit, onBack }) => {
 
   const [errors, setErrors] = useState({});
 
+  // Ensure the page opens scrolled to top when this component mounts
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      // fallback for environments without window
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }
+  }, []);
+
   useEffect(() => {
     const miles =
       formData.mileageUnit === 'km'

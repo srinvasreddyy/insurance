@@ -28,14 +28,14 @@ const NavBar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex justify-between items-center h-20 px-5 md:px-8">
+      <div className="flex justify-between items-center h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo with Image */}
         <motion.a
           href="/"
           className="flex items-center gap-2 cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
-          <img src={logo} alt="Be Sure" className="h-15 w-auto" />
+          <img src={logo} alt="Be Sure" className="h-12 w-auto object-contain" />
         </motion.a>
 
         {/* Desktop Menu */}

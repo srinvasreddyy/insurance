@@ -13,7 +13,7 @@ export const AuthModalProvider = ({ children }) => {
   });
 
   const openLoginModal = useCallback(() => {
-    console.log("openLoginModal");
+    // openLoginModal
     setModalState({
       isOpen: true,
       type: 'login',   // <-- FIXED
@@ -24,7 +24,7 @@ export const AuthModalProvider = ({ children }) => {
   }, []);
 
   const openRegisterModal = useCallback(() => {
-    console.log("openRegisterModal");
+    // openRegisterModal
     setModalState({
       isOpen: true,
       type: 'register',  // <-- FIXED
@@ -35,7 +35,7 @@ export const AuthModalProvider = ({ children }) => {
   }, []);
 
   const openOTPModal = useCallback((email) => {
-    console.log("openOTPModal", email);
+    // openOTPModal
     setModalState({
       isOpen: true,
       type: 'otp',  // <-- FIXED
@@ -46,7 +46,7 @@ export const AuthModalProvider = ({ children }) => {
   }, []);
 
   const closeModal = useCallback(() => {
-    console.log("closeModal");
+    // closeModal
     setModalState({
       isOpen: false,
       type: null,   // <-- FIXED
