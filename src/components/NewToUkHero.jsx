@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from '@tanstack/react-router'
 
 const NewToUkHero = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="bg-gradient-to-b from-slate-50 to-blue-50 py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8 grid lg:grid-cols-2 items-center gap-8 lg:gap-12">
@@ -78,7 +81,11 @@ const NewToUkHero = () => {
           </ul>
 
           <div className="mt-8 sm:mt-10">
-            <button className="bg-gradient-to-r from-blue-600 to-teal-500 hover:shadow-lg text-white font-bold px-8 sm:px-12 py-3 rounded-full shadow-md transition-all">
+            <button
+              type="button"
+              onClick={() => navigate({ to: '/getaquote' })}
+              className="bg-gradient-to-r from-blue-600 to-teal-500 hover:shadow-lg text-white font-bold px-8 sm:px-12 py-3 rounded-full shadow-md transition-all"
+            >
               Get a free quote
             </button>
           </div>

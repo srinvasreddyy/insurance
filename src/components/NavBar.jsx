@@ -9,6 +9,23 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { openLoginModal } = useAuthModal();
+  const [activePath, setActivePath] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const p = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+      return p === '' ? null : p;
+    }
+    return null;
+  });
+
+  // Update activePath when the history changes (back/forward)
+  React.useEffect(() => {
+    const onPop = () => {
+      const p = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+      setActivePath(p === '' ? null : p);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
 
   const menu = [
     { id: 1, name: "New to the UK?", path: "newtouk" },
@@ -30,29 +47,33 @@ const NavBar = () => {
     >
       <div className="flex justify-between items-center h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo with Image */}
-        <motion.a
-          href="/"
-          className="flex items-center gap-2 cursor-pointer"
+        <motion.button
+          type="button"
+          onClick={() => { navigate({ to: '/' }); setActivePath(null); }}
+          className="flex items-center gap-2 cursor-pointer bg-transparent border-0"
           whileHover={{ scale: 1.05 }}
         >
           <img src={logo} alt="Be Sure" className="h-12 w-auto object-contain" />
-        </motion.a>
+        </motion.button>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex gap-8 text-white font-medium">
           {menu.map((item, index) => (
-            <motion.a
+            <motion.button
               key={item.id}
-              href={item.path}
-              className="hover:text-blue-100 transition-colors relative group"
+              type="button"
+              onClick={() => {
+                navigate({ to: `/${item.path}` });
+                setActivePath(item.path);
+              }}
+              className={`transition-colors relative group ${activePath === item.path ? 'underline underline-offset-4 decoration-2 text-blue-100' : 'hover:text-blue-100'}`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.3 }}
-              whileHover={{ y: -2 }}
             >
               {item.name}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-100 group-hover:w-full transition-all duration-300"></span>
-            </motion.a>
+            </motion.button>
           ))}
         </div>
 
@@ -120,17 +141,21 @@ const NavBar = () => {
             transition={{ duration: 0.3 }}
           >
             {menu.map((item, index) => (
-              <motion.a
+              <motion.button
                 key={item.id}
-                href={item.path}
-                className="text-white hover:text-blue-100 transition-colors"
-                onClick={() => setMenuOpen(false)}
+                type="button"
+                onClick={() => {
+                  navigate({ to: `/${item.path}` });
+                  setMenuOpen(false);
+                  setActivePath(item.path);
+                }}
+                className={`text-white transition-colors ${activePath === item.path ? 'underline underline-offset-4 decoration-2 text-blue-100' : 'hover:text-blue-100'}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
               >
                 {item.name}
-              </motion.a>
+              </motion.button>
             ))}
             <div className="flex flex-col gap-3 mt-4 w-full px-8">
               <motion.button 

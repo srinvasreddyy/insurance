@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import VanHero from '../components/VanHero'
 import VanDriverBenefits from '../components/VanDriverBenefits'
 import VanCoverageDetails from '../components/VanCoverageDetails'
@@ -9,6 +9,14 @@ import Footer from '../components/Footer'
 import PolicyInformation from '../components/PolicyInformation'
 
 const Van = () => {
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div>
         <VanHero/>

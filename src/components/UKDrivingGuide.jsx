@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaArrowRight } from 'react-icons/fa'
+import { useNavigate } from '@tanstack/react-router'
 
 const UKDrivingGuide = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="bg-blue-50 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
@@ -51,7 +54,11 @@ const UKDrivingGuide = () => {
             </div>
 
             {/* CTA Button */}
-            <button className="bg-gray-400 hover:bg-gray-500 text-gray-900 font-bold px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full transition-colors duration-200">
+            <button
+              type="button"
+              onClick={() => navigate({ to: '/newtouk' })}
+              className="bg-gray-400 hover:bg-gray-500 text-gray-900 font-bold px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full transition-colors duration-200"
+            >
               Read more about driving in the UK
             </button>
           </motion.div>

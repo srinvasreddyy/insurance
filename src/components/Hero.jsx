@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaLock, FaArrowRight } from "react-icons/fa";
+import { useNavigate } from '@tanstack/react-router';
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-gradient-to-b from-white via-blue-50 to-slate-50 min-h-screen flex items-center justify-center w-full overflow-hidden pt-20 pb-12 lg:pb-0">
       <div className="w-full max-w-7xl px-3 sm:px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 max-lg:mt-20 pt-10 gap-6 sm:gap-8 lg:gap-16 items-center">
@@ -105,6 +107,8 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.5 }}
           >
             <button
+              type="button"
+              onClick={() => navigate({ to: '/getaquote' })}
               className="text-lg px-10 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-blue-600 to-teal-500 text-white hover:scale-105"
             >
               Get a free quote

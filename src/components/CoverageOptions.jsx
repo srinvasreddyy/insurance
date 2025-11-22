@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaCar, FaTruck } from 'react-icons/fa'
+import { useNavigate } from '@tanstack/react-router'
 
 const CoverageOptions = () => {
+  const navigate = useNavigate()
   const coverageOptions = [
     {
       id: 1,
@@ -63,7 +65,11 @@ const CoverageOptions = () => {
                 </h3>
 
                 {/* CTA Button */}
-                <button className="bg-gray-300 hover:bg-gray-400 text-gray-900 font-bold px-5 sm:px-6 py-2 text-sm sm:text-base rounded-full transition-colors duration-200">
+                <button
+                  type="button"
+                  onClick={() => navigate({ to: option.type === 'Car' ? '/car' : '/van' })}
+                  className="bg-gray-300 hover:bg-gray-400 text-gray-900 font-bold px-5 sm:px-6 py-2 text-sm sm:text-base rounded-full transition-colors duration-200"
+                >
                   Find out more
                 </button>
               </motion.div>

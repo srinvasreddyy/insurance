@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaStar, FaQuoteLeft } from 'react-icons/fa'
+import { useNavigate } from '@tanstack/react-router'
 
 const CustomerReview = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [slideWidth, setSlideWidth] = useState(320)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const updateSlideWidth = () => {
@@ -227,6 +229,8 @@ const CustomerReview = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <motion.button 
+            type="button"
+            onClick={() => navigate({ to: '/getaquote' })}
             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

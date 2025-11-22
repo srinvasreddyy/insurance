@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from '@tanstack/react-router'
 
 const VanInsuranceDetails = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="relative w-full h-96 lg:h-[500px] bg-white flex items-center justify-center py-8">
       
@@ -36,7 +39,11 @@ const VanInsuranceDetails = () => {
           </div>
 
           {/* CTA Button */}
-          <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-6 py-2 rounded-full transition-colors duration-200 text-sm w-full md:w-auto">
+          <button
+            type="button"
+            onClick={() => navigate({ to: '/getaquote' })}
+            className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-6 py-2 rounded-full transition-colors duration-200 text-sm w-full md:w-auto"
+          >
             Get your cover now
           </button>
 

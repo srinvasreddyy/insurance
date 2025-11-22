@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 
 const CarHero = () => {
+  const navigate = useNavigate()
+
   return (
     <motion.section 
       className="bg-gradient-to-b from-slate-900 to-slate-800 text-white min-h-screen flex items-center"
@@ -24,7 +27,11 @@ const CarHero = () => {
           </p>
 
           {/* CTA Button */}
-          <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200">
+          <button
+            type="button"
+            onClick={() => navigate({ to: '/getaquote' })}
+            className="bg-teal-500 hover:bg-teal-600 text-white font-bold px-8 py-3 rounded-full max-w-xs mb-8 transition-colors duration-200"
+          >
             Get a free quote
           </button>
 

@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import carFinanceImage from '../assets/carfinanceimage.jpg'
 
 const CarFinanceHero = () => {
+  const navigate = useNavigate()
+
   return (
     <section className="relative w-full min-h-screen bg-gray-900 flex items-center">
       
@@ -40,7 +43,11 @@ const CarFinanceHero = () => {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-10 py-3 rounded-full mb-12 transition-colors duration-200 text-lg">
+            <button
+              type="button"
+              onClick={() => navigate({ to: '/getaquote' })}
+              className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-10 py-3 rounded-full mb-12 transition-colors duration-200 text-lg"
+            >
               Join the waitlist
             </button>
 

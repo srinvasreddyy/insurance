@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NewToUkHero from '../components/NewToUkHero'
 import NewToUkAd from '../components/NewToUkAd'
 import CarHero from '../components/CarHero'
@@ -12,11 +12,18 @@ import FAQList from '../components/FAQList'
 import PolicyInformation from '../components/PolicyInformation'
 import Footer from '../components/Footer'
 const NewtoUk = () => {
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    } catch (e) {
+      if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div>
         <NewToUkHero/>
         <NewToUkAd/>
-        <CarHero/>
         <InsuranceBenefits/>
         <CustomerReview/>
         <CoverDetails/>

@@ -1,8 +1,11 @@
 import React from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import vanImage from '../assets/Vanimage1.webp'
 
 const VanHero = () => {
+  const navigate = useNavigate()
+
   return (
     <motion.section 
       className="relative w-full min-h-screen flex items-center bg-slate-900"
@@ -43,7 +46,11 @@ const VanHero = () => {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-12 py-3 rounded-full mb-10 transition-colors duration-200 text-lg w-full md:w-auto">
+            <button
+              type="button"
+              onClick={() => navigate({ to: '/getaquote' })}
+              className="bg-blue-400 hover:bg-blue-500 text-gray-900 font-bold px-12 py-3 rounded-full mb-10 transition-colors duration-200 text-lg w-full md:w-auto"
+            >
               Get a quote
             </button>
 
